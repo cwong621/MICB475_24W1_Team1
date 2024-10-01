@@ -33,6 +33,7 @@ HIV
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4816837/ (Data: https://www.ncbi.nlm.nih.gov/sra/?term=PRJNA307231)
 - https://journals.asm.org/doi/10.1128/mbio.00409-23#tabS1 (Data: https://www.ncbi.nlm.nih.gov/bioproject/530161, Metadata: https://journals.asm.org/doi/suppl/10.1128/mbio.00409-23/suppl_file/mbio.00409-23-s0002.tif
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10837999/  (Data: https://www.ebi.ac.uk/ena/browser/view/PRJEB66206, Metadata: https://zenodo.org/records/8346401)
+- Maybe an interesting paper to identify interesting variables: https://journals.asm.org/doi/10.1128/spectrum.00708-21
 
 IVF
 - https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2023.1200002/full#h6 (Data: https://www.ncbi.nlm.nih.gov/Traces/study/?query_key=3&WebEnv=MCID_66f4652bd2376f7b3cb1b872&o=acc_s%3Aa)
