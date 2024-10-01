@@ -1,6 +1,12 @@
 # MICB475_24W1_Team1
 
-
+## Tuesday Oct 1 Meeting Agenda
+1. Brainstorm project 2 research questions:
+Potential directions:
+- HIV dataset #4: effects of cotrimoxazole and ART on microbiota function in males vs females? Take multiple datasets and compare between cohorts/geography?
+- IVF dataset:
+- Combining MS/IBD datasets based on similar treatments
+  
 ## Monday Sep 23 - prep for team meeting 1
 Potential ideas for project 2
 1. Comparing gut microbiome in MS patients and ILD patients (halfvarson dataset) -> using existing datasets
