@@ -1,11 +1,22 @@
 # MICB475_24W1_Team1
 
-## Tuesday Oct 1 Meeting Agenda
+## Tuesday Oct 1 Meeting Agenda/Minutes
 1. Brainstorm project 2 research questions:
 Potential directions:
-- HIV dataset #4: effects of cotrimoxazole and ART on microbiota function in males vs females? Take multiple datasets and compare between cohorts/geography?
-- IVF dataset:
-- Combining MS/IBD datasets based on similar treatments
+HIV dataset #4: effects of cotrimoxazole and ART on microbiota function in males vs females? Take multiple datasets and compare between cohorts/geography?
+  - Cohorts: male/female, ART+/-
+  - General health measures: BMI, inflammation (IL6, CRP, Cortisol), lymphocyte %, *viral load*, increase/decrease in viral load
+    Action Items: look into general health measures -> figure out what counts as healthy or not (recategorize)
+    - look into literature, see what variables have been explored
+    - Discuss and decide what variables to focus on, plan aims at next meeting
+    
+IVF dataset: maybe #3 - ion torrent not illumina = big files, not ideal
+  
+Combining MS/IBD datasets based on similar treatments:
+- Ryan dataset: metadata about medications, categorized by class (immunosuppressive...)
+- crossover between groups: untreated groups
+- not sure how to tie to MS - no tie with inflammation
+
   
 ## Monday Sep 23 - prep for team meeting 1
 Potential ideas for project 2
