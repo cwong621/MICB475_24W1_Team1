@@ -1,5 +1,13 @@
 # MICB475_24W1_Team1
 
+## Tuesday October 8 Meeting Agenda/Minutes
+1. Finalize research question and aims
+   - the paper excludes 21 patients with viral load >200 after ART from their analysis
+   - microbiome (and immune/inflammatory/general health measures?) signatures associated with poor response to ART
+       - 16 ART-naive individuals that have viral load >200 after 24 weeks on ART (ART non-responders): look at alpha/beta diversity and microbial composition before and after 24 week treatment (compare to changes in those that have viral load <200 after 24 weeks on ART.
+       - 6 ART-experienced individuals with viral load >200 at baseline: compare with 24 week ART non-responders -> see effect of length of ART treatment?
+       - also look at CD4 subtypes (chronic activation, exhaustion) and inflammatory markers in these groups
+   - stratify by sex, age -> depends on sample size
 ## Tuesday Oct 1 Meeting Agenda/Minutes
 1. Brainstorm project 2 research questions:
 Potential directions:
