@@ -12,6 +12,7 @@
    - stratify by sex, age -> depends on sample size
 
 Minutes:
+
 Aim 1 – Redefine metadata (and modify manifest file based off of what we have filtered out)
 •	First column of sample ID’s
 •	Separate each patient between visits 2 and 3
