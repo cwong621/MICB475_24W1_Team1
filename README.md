@@ -1,5 +1,7 @@
 # MICB475_24W1_Team1
 
+
+
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
    - the paper excludes 21 patients with viral load >200 after ART from their analysis
@@ -8,6 +10,35 @@
        - 6 ART-experienced individuals with viral load >200 at baseline: compare with 24 week ART non-responders -> see effect of length of ART treatment?
        - also look at CD4 subtypes (chronic activation, exhaustion) and inflammatory markers in these groups
    - stratify by sex, age -> depends on sample size
+
+Minutes:
+Aim 1 – Redefine metadata (and modify manifest file based off of what we have filtered out)
+•	First column of sample ID’s
+•	Separate each patient between visits 2 and 3
+•	Filter out people with only one visit, as well as people on ART to start. 
+•	Use visit 2 as a control and visit 3 as an “after” condition. 
+•	Make a new column called “response”, where in visit 1 there are possible  “ctrl low”, “ctrl high”, “ctrl healthy (i.e. HIV neg)” categories
+•	 In visit 3 have two categories of “responsive” vs “non-responsive”
+-	Use histograms to determine highs and lows and responsive vs non-responsive
+
+Aim 2 – correlation analysis btw being responsive or not and start and final viral load (make a matrix w added colors
+
+Aim 3 – based on response column, determine if there are general differences in diversity of their gut and taxonomic
+
+-	Taxa bar plot
+-	Alpha beta div metrics
+-	DeSEQ (?)
+-	Core microbiome – Venn diagram to compare how many unique versus shared per condition
+-	Indicator taxa to see if there are predictive bugs beyond just this dataset
+-	Differential abundance analysis
+
+Aim 4 – maybe a functional analysis to see what metabolic pathways are activated to see if there are more pathogenic organisms vs commensal organisms, i.e. healthier gut or not
+
+
+Do research into HIV and ARTs for proposal; look into UJEMI for inspiration for if loops to source code and such. Decide how to define responsiveness, etc., with the histograms or the literature (there was a heat map done on anemia and infancy in UJEMI)
+-	We will get a new checklist for the proposal about data wrangling
+
+  
 ## Tuesday Oct 1 Meeting Agenda/Minutes
 1. Brainstorm project 2 research questions:
 Potential directions:
