@@ -6,7 +6,8 @@ meta <- read_delim(file="hiv_metadata.tsv", delim="\t")
 #filter out ART-experienced samples and patients with only 1 visit
 meta_filt <- filter(meta, `Cohort_Short`!="B") %>%
   group_by(`PID`) %>%
-  filter(n()>1)
+  filter(n()>1) %>%
+  ungroup()
 
 # make response column
 
@@ -26,7 +27,8 @@ meta_redef <- select(meta_filt,`sample-id`, `PID`,`Cohort_Short`, `Visit`, `HIV-
     is.na(`HIV-1_viral_load`) ~ "negative"
   ))
 
-meta_heat <- filter(meta_redef, `Cohort_Short`=="A") %>%
-  select(`PID`,`response`)
-heatmap(meta_heat)
+# load manifest and filter
+manifest <- read_delim(file="hiv_manifest.tsv", delim="\t")
+samples_filt <- select(meta_redef, `sample-id`)
+manifest_filt <- left_join(samples_filt, manifest, join_by(`sample-id`))
 
