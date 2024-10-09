@@ -10,8 +10,8 @@ meta_filt <- filter(meta, `Cohort_Short`!="B") %>%
 
 # make response column
 
-v2threshold <- 10000
-v3threshold <- 200
+v2threshold <- 10000 #below 10000 is low if not on ART
+v3threshold <- 200 #CDC defines <200 as viral suppression
 
 meta_redef <- select(meta_filt,`sample-id`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`)%>%
   mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND viral loads converted to 0
