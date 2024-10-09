@@ -32,3 +32,6 @@ manifest <- read_delim(file="hiv_manifest.tsv", delim="\t")
 samples_filt <- select(meta_redef, `sample-id`)
 manifest_filt <- left_join(samples_filt, manifest, join_by(`sample-id`))
 
+#save filtered manifest
+write.csv(manifest_filt, file="hiv_manifest_filt.tsv", row.names=FALSE)
+
