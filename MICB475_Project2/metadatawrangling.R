@@ -11,19 +11,19 @@ meta_filt <- filter(meta, `Cohort_Short`!="B") %>%
 
 # make response column
 
-v2threshold <- 10000 #below 10000 is low if not on ART
-v3threshold <- 200 #CDC defines <200 as viral suppression
+v2threshold <- 10000 #some sources say below 10000 is low if not on ART (may adjust later)
+v3threshold <- 200 #CDC defines <200 as viral suppression under ART
 
 meta_redef <- select(meta_filt,`sample-id`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`)%>%
-  mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND viral loads converted to 0
-  mutate(`HIV-1_viral_load` = ifelse(grepl("Negative", `HIV-1_viral_load`), NA, `HIV-1_viral_load`)) %>%
+  mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND (not detectable) viral loads converted to 0
+  mutate(`HIV-1_viral_load` = ifelse(grepl("Negative", `HIV-1_viral_load`), NA, `HIV-1_viral_load`)) %>% #values for HIV negative samples coverted to NA
   mutate(`HIV-1_viral_load` = as.numeric(`HIV-1_viral_load`)) %>%
   mutate(`Visit` = as.factor(`Visit`)) %>%
   mutate(response = case_when(
-    `Visit`=="2" & `HIV-1_viral_load`<v2threshold ~ "HIVlow",
-    `Visit`=="2" & `HIV-1_viral_load`>v2threshold ~ "HIVhigh",
+    `Visit`=="2" & `HIV-1_viral_load`<v2threshold ~ "HIVlow", 
+    `Visit`=="2" & `HIV-1_viral_load`>=v2threshold ~ "HIVhigh",
     `Visit`=="3" & `HIV-1_viral_load`<v3threshold ~ "responsive",
-    `Visit`=="3" & `HIV-1_viral_load`>v3threshold ~ "nonresponsive",
+    `Visit`=="3" & `HIV-1_viral_load`>=v3threshold ~ "nonresponsive",
     is.na(`HIV-1_viral_load`) ~ "negative"
   ))
 
