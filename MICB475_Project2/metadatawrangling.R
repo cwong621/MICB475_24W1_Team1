@@ -30,12 +30,11 @@ meta_redef <- select(meta_filt,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Vis
 
 
 # load manifest and filter samples to match redefined metadata
-samples_filt <- select(meta_redef, `sample-id`)
 manifest_filt <- read_delim(file="hiv_manifest.tsv", delim="\t") %>%
-  right_join(samples_filt, join_by(`sample-id`))
+  subset(`sample-id` %in% meta_redef$`sample-id`)
 
 #save filtered manifest
-write.csv(manifest_filt, file="hiv_manifest_filt.tsv", row.names=FALSE)
+write.table(manifest_filt, file="hiv_manifest_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 
 #### HEATMAP ####
 #make metadata table for heatmap
