@@ -56,4 +56,4 @@ heatmap <- ggplot(melt(response_table), aes(Var2, Var1)) +
 #save heatmap
 ggsave(filename = "art_response_heatmap.png"
        , heatmap
-       , height=4, width=4)
+       , height=4, width=5)
