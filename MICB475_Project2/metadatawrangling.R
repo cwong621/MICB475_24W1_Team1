@@ -5,29 +5,28 @@ library(reshape2)
 meta <- read_delim(file="hiv_metadata.tsv", delim="\t")
 
 #### METADATA WRANGLING ####
-#filter out ART-experienced samples and patients with only 1 visit
-meta_filt <- filter(meta, `Cohort_Short`!="B") %>%
-  group_by(`PID`) %>%
-  filter(n()>1) %>%
-  ungroup()
 
-# make response column
+# define thresholds
 v2threshold <- 10000 #some sources say below 10000 is low if not on ART (may adjust later)
 v3threshold <- 200 #CDC defines <200 as viral suppression under ART
 
-meta_redef <- select(meta_filt,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`, `CRP_mg_L`, `IL-6_pg_mL`,`CD4+_count`,`CD4+_Cat`, `CD4_CD103_Percent`, `CD4_PD1_Percent`, `CD4_HLADRpos_CD38pos_Percent`)%>%
+# clean HIV-1 viral load column and create response column
+meta_redef <- select(meta,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`, `CRP_mg_L`, `IL-6_pg_mL`,`CD4+_count`,`CD4+_Cat`, `CD4_CD103_Percent`, `CD4_PD1_Percent`, `CD4_HLADRpos_CD38pos_Percent`)%>%
   mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND (not detectable) viral loads converted to 0
   mutate(`HIV-1_viral_load` = ifelse(grepl("Negative", `HIV-1_viral_load`), NA, `HIV-1_viral_load`)) %>% #values for HIV negative samples coverted to NA
   mutate(`HIV-1_viral_load` = as.numeric(`HIV-1_viral_load`)) %>%
-  mutate(`Visit` = as.factor(`Visit`)) %>%
+  filter(`Cohort_Short`!="B" | `HIV-1_viral_load`>=v3threshold) %>% #remove ART-experienced individuals responsive to therapy
+  group_by(`PID`) %>%
+  filter(n()>1) %>% #remove individuals with only one visit
+  ungroup() %>%
   mutate(response = case_when(
-    `Visit`=="2" & `HIV-1_viral_load`<v2threshold ~ "HIV low", 
-    `Visit`=="2" & `HIV-1_viral_load`>=v2threshold ~ "HIV high",
-    `Visit`=="3" & `HIV-1_viral_load`<v3threshold ~ "responsive",
-    `Visit`=="3" & `HIV-1_viral_load`>=v3threshold ~ "nonresponsive",
+    `Visit`==2 & `HIV-1_viral_load`<v2threshold ~ "HIV low", 
+    `Visit`==2 & `HIV-1_viral_load`>=v2threshold ~ "HIV high",
+    `Visit`==3 & `HIV-1_viral_load`<v3threshold & `Cohort_Short`=="A" ~ "responsive",
+    `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="A" ~ "nonresponsive",
+    `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="B" ~ "experienced nonresponsive",
     is.na(`HIV-1_viral_load`) ~ "negative"
   ))
-
 
 # load manifest and filter samples to match redefined metadata
 manifest_filt <- read_delim(file="hiv_manifest.tsv", delim="\t") %>%
@@ -37,12 +36,12 @@ manifest_filt <- read_delim(file="hiv_manifest.tsv", delim="\t") %>%
 write.table(manifest_filt, file="hiv_manifest_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 
 #### HEATMAP ####
-#make metadata table for heatmap
+#make metadata table for heatmap (only ART naive samples)
 meta_heat <- group_by(meta_redef, `PID`) %>%
+  filter(`Cohort_Short`=="A") %>%
   arrange(`PID`, `response`) %>%
   summarise(response_comb = paste(`response`, collapse = ","), .groups = "drop") %>%
-  separate(response_comb, into=c("start_viral_load", "response"), sep=",") %>%
-  filter(`start_viral_load`!="negative")
+  separate(response_comb, into=c("start_viral_load", "response"), sep=",")
 
 # make heatmap
 response_table <- table(meta_heat$response, meta_heat$start_viral_load) 
