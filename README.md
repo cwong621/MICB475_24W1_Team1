@@ -3,7 +3,10 @@
 ## Tuesday October 15 Meeting Agenda/Minutes
 1. Review data wrangling code
 2. Determine schedule/assignments to complete project proposal -> goal to finish assigned sections by Friday, Oct 18
- - give an update on our progress, if anyone needs help
+   - give an update on our progress, if anyone needs help
+3. Determine the groupings for diversity/taxonomic analysis
+   - responsive/non-responsive
+   - 
 
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
