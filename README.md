@@ -22,17 +22,19 @@ Aim 1 – Redefine metadata (and modify manifest file based off of what we have 
 •	 In visit 3 have two categories of “responsive” vs “non-responsive”
 -	Use histograms to determine highs and lows and responsive vs non-responsive
 
-Aim 2 – correlation analysis btw being responsive or not and start and final viral load (make a matrix w added colors
+Aim 2 – correlation analysis btw being responsive or not and start and final viral load (make a matrix w added colors)
+- Heat map to visualize correlation (without ctrl healthy): 4 panels
 
 Aim 3 – based on response column, determine if there are general differences in diversity of their gut and taxonomic
 
 -	Taxa bar plot
 -	Alpha beta div metrics
--	DeSEQ (?)
+-	DeSEQ: for deternining differentially expressed genes.
 -	Core microbiome – Venn diagram to compare how many unique versus shared per condition
 -	Indicator taxa to see if there are predictive bugs beyond just this dataset
 -	Differential abundance analysis
 
+EXTRA: 
 Aim 4 – maybe a functional analysis to see what metabolic pathways are activated to see if there are more pathogenic organisms vs commensal organisms, i.e. healthier gut or not
 
 
