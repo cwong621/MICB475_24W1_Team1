@@ -6,7 +6,7 @@
    - give an update on our progress, if anyone needs help
 3. Determine the groupings for diversity/taxonomic analysis
    - responsive/non-responsive
-   - 
+4. Ask about title specificity - how many of our goals do we include?
 
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
