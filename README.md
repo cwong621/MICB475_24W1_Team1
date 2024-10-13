@@ -2,11 +2,14 @@
 
 ## Tuesday October 15 Meeting Agenda/Minutes
 1. Review data wrangling code
-2. Determine schedule/assignments to complete project proposal -> goal to finish assigned sections by Friday, Oct 18
+2. Ask if we can use 515-806 database for taxonomic analysis
+     "Extracted DNA was PCR-amplified with barcoded primers targeting the V4 region of 16S rRNA gene according to the Earth Microbiome Project 16S Illumina Amplicon protocol with the 515F:806R primer constructs"
+4. Determine schedule/assignments to complete project proposal -> goal to finish assigned sections by Friday, Oct 18
    - give an update on our progress, if anyone needs help
-3. Determine the groupings for diversity/taxonomic analysis
-   - responsive/non-responsive
-4. Ask about title specificity - how many of our goals do we include?
+5. Determine the groupings for diversity/taxonomic analysis
+   - responsive/non-responsive (vs healthy?)
+   - before and after
+6. Ask about title specificity - how many of our goals do we include?
 
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
