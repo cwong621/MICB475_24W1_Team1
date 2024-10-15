@@ -4,12 +4,27 @@
 1. Review data wrangling code
 2. Ask if we can use 515-806 database for taxonomic analysis
      "Extracted DNA was PCR-amplified with barcoded primers targeting the V4 region of 16S rRNA gene according to the Earth Microbiome Project 16S Illumina Amplicon protocol with the 515F:806R primer constructs"
-4. Determine schedule/assignments to complete project proposal -> goal to finish assigned sections by Friday, Oct 18
+3. Determine schedule/assignments to complete project proposal -> goal to finish assigned sections by Friday, Oct 18
    - give an update on our progress, if anyone needs help
-5. Determine the groupings for diversity/taxonomic analysis
+4. Determine the groupings for diversity/taxonomic analysis
    - responsive/non-responsive (vs healthy?)
    - before and after
-6. Ask about title specificity - how many of our goals do we include?
+5. Ask about title specificity - how many of our goals do we include?
+
+   Minutes:
+   1.re-label to be more descriptive so that it's ready for publication; HIV low/high --> pre-treatment; negative --> healthy
+        2 controls: pre-treatment and healthy control
+   2.can use 515-806 database
+   for data processing --> we do not need to re-label metadata since we will not be using those figures in the manuscript
+   3. test all groupings
+      We should definitely do functional analysis
+   4. heatmap --> shows that the data follows a trend that makes sense; higher viral load will end up having more non-responsive individuals
+   6. Intro and Background --> WHY we are doing the project, what is the significance, what have they found in literature already, how do we build off of that?
+   7. Hypothesis: need to come up with one; explain what you are going to see and why based on literature
+   8. Research Objectives: What is the big question, bigger picture
+   9. difference between approach and overview: approach is detailed (eg. create taxa bar plots) and flowchart is generic (eg. taxonomic analysis)
+   10. email demux file to Evelyn to check how it was trimmed; do this before diversity analysis
+   11. Sampling depth: 16,000; not above 39,000 (may have to exclude the experienced non-responsive group)
 
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
