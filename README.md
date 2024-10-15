@@ -12,19 +12,19 @@
 5. Ask about title specificity - how many of our goals do we include?
 
    Minutes:
-   1.re-label to be more descriptive so that it's ready for publication; HIV low/high --> pre-treatment; negative --> healthy
-        2 controls: pre-treatment and healthy control
-   2.can use 515-806 database
-   for data processing --> we do not need to re-label metadata since we will not be using those figures in the manuscript
-   3. test all groupings
-      We should definitely do functional analysis
-   4. heatmap --> shows that the data follows a trend that makes sense; higher viral load will end up having more non-responsive individuals
-   6. Intro and Background --> WHY we are doing the project, what is the significance, what have they found in literature already, how do we build off of that?
-   7. Hypothesis: need to come up with one; explain what you are going to see and why based on literature
-   8. Research Objectives: What is the big question, bigger picture
-   9. difference between approach and overview: approach is detailed (eg. create taxa bar plots) and flowchart is generic (eg. taxonomic analysis)
-   10. email demux file to Evelyn to check how it was trimmed; do this before diversity analysis
-   11. Sampling depth: 16,000; not above 39,000 (may have to exclude the experienced non-responsive group)
+   - re-label to be more descriptive so that it's ready for publication; HIV low/high --> pre-treatment; negative --> healthy
+   - 2 controls: pre-treatment and healthy control
+   - can use 515-806 database
+   - for data processing --> we do not need to re-label metadata since we will not be using those figures in the manuscript
+   - test all groupings
+   - We should definitely do functional analysis
+   - heatmap --> shows that the data follows a trend that makes sense; higher viral load will end up having more non-responsive individuals
+   - Intro and Background --> WHY we are doing the project, what is the significance, what have they found in literature already, how do we build off of that?
+   - Hypothesis: need to come up with one; explain what you are going to see and why based on literature
+   - Research Objectives: What is the big question, bigger picture
+   - difference between approach and overview: approach is detailed (eg. create taxa bar plots) and flowchart is generic (eg. taxonomic analysis)
+   - email demux file to Evelyn to check how it was trimmed; do this before diversity analysis
+   - Sampling depth: 16,000; not above 39,000 (may have to exclude the experienced non-responsive group)
 
 ## Tuesday October 8 Meeting Agenda/Minutes
 1. Finalize research question and aims
