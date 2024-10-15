@@ -28,11 +28,14 @@ meta_redef <- select(meta,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Visit`, 
     is.na(`HIV-1_viral_load`) ~ "negative"
   ))
 
+# save modified metadata file to uplaod to servrer
+write.table(meta_redef, file="hiv_metadata_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
+
 # load manifest and filter samples to match redefined metadata
 manifest_filt <- read_delim(file="hiv_manifest.tsv", delim="\t") %>%
   subset(`sample-id` %in% meta_redef$`sample-id`)
 
-#save filtered manifest
+#save filtered manifest to upload to server
 write.table(manifest_filt, file="hiv_manifest_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 
 #### HEATMAP ####
