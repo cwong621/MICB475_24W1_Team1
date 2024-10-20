@@ -1,4 +1,13 @@
 # MICB475_24W1_Team1
+## Tuesday October 22 Meeting Agenda/Minutes
+1. Splitting response column into 2 columns?
+     - assigns response/nonresponse to metadata from both timepoints from same patient -> easier to compare between timepoints downstream for the 2 groups?
+     - same for pretreatment viral load
+3. correlation analysis for variables other than viral load
+     - CD4 count - significant difference
+     - cotrimoxazole use, viral load - trend
+     - BMI, sex, IL6 level, CRP level, rural/urban - no effect
+5. this week: finish Qiime processing and generate phyloseq object
 
 ## Tuesday October 15 Meeting Agenda/Minutes
 1. Review data wrangling code
