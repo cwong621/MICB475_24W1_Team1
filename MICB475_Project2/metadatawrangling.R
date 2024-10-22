@@ -69,3 +69,54 @@ heatmap <- ggplot(melt(response_table), aes(Var2, Var1)) +
 ggsave(filename = "art_response_heatmap.png"
        , heatmap
        , height=4, width=5)
+
+
+
+
+#### do not use for now - makes separated response/start viral load columns
+# create redefined metadata table with both combined and separated response column
+meta_redef <- select(meta,`sample-id`,`Cotrimoxazole_HIV`, `Arm_Short`, `BMI_Cat`,`Current_ART`, `Cotrimoxazole_HIV`,`Gender`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`, `CRP_mg_L`, `IL-6_pg_mL`,`CD4+_count`,`CD4+_Cat`, `CD4_CD103_Percent`, `CD4_PD1_Percent`, `CD4_HLADRpos_CD38pos_Percent`)%>%
+  mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND (not detectable) viral loads converted to 0
+  mutate(`HIV-1_viral_load` = ifelse(grepl("Negative", `HIV-1_viral_load`), NA, `HIV-1_viral_load`)) %>% #values for HIV negative samples coverted to NA
+  mutate(`HIV-1_viral_load` = as.numeric(`HIV-1_viral_load`)) %>%
+  filter(`Cohort_Short`!="B" | `HIV-1_viral_load`>=v3threshold) %>% #remove ART-experienced individuals responsive to therapy
+  group_by(`PID`) %>%
+  filter(n()>1) %>% #remove individuals with only one visit
+  ungroup() %>%
+  mutate(response = case_when(
+    `Visit`==2 & `HIV-1_viral_load`<v2threshold & `Cohort_Short`=="A" ~ "HIV low pretreatment", 
+    `Visit`==2 & `HIV-1_viral_load`>=v2threshold & `Cohort_Short`=="A" ~ "HIV high pretreatment",
+    `Visit`==3 & `HIV-1_viral_load`<v3threshold & `Cohort_Short`=="A" ~ "responsive",
+    `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="A" ~ "nonresponsive",
+    `Visit`==3 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V3",
+    `Visit`==2 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V2",
+    is.na(`HIV-1_viral_load`) ~ "Healthy"
+  ))%>%
+  mutate(response_patient = case_when( #make response column
+    `Visit`==3 & `HIV-1_viral_load`<v3threshold & `Cohort_Short`=="A" ~ "responsive",
+    `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="A" ~ "nonresponsive",
+    `Visit`==3 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V3",
+    `Visit`==2 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V2",
+    is.na(`HIV-1_viral_load`) ~ "Healthy"
+  ))  %>%
+  group_by(`PID`) %>% 
+  mutate(across(`response_patient`, ~ coalesce(.x, first(.x, na_rm=TRUE))))%>% #apply response category to samples from both timepoints for same patient
+  mutate(start_viral_load = case_when( #make column for starting viral load high/low
+    `Visit`==2 & `HIV-1_viral_load`<v2threshold & `Cohort_Short`=="A" ~ "HIV low pretreatment", 
+    `Visit`==2 & `HIV-1_viral_load`>=v2threshold & `Cohort_Short`=="A" ~ "HIV high pretreatment",
+    `Visit`==2 & `Cohort_Short`=="B" ~ NA,
+    is.na(`HIV-1_viral_load`) ~ "Healthy"
+  )) %>%
+  mutate(across(`start_viral_load`, ~ coalesce(.x, first(.x,  na_rm=TRUE))))%>% #apply starting viral load category to samples from both timepoints for same patient
+  ungroup()%>%
+  mutate(IL6_Cat = case_when( #create column categorizing IL6 level
+    `IL-6_pg_mL`<=5 ~ "normal",
+    `IL-6_pg_mL`>5 ~ "high"
+  ))%>%
+  mutate(CRP_Cat = case_when( #create column categorizing CRP level
+    `CRP_mg_L`<=3 ~ "normal",
+    `CRP_mg_L`>3 ~ "high"
+  ))
+
+# save modified metadata file to uplaod to server
+write.table(meta_redef, file="hiv_metadata_filt_separated.tsv", quote=FALSE, sep="\t", row.names=FALSE)
