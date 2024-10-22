@@ -46,3 +46,12 @@ qiime feature-classifier classify-sklearn \
   --i-classifier /mnt/datasets/classifiers/silva-138-99-515-806-nb-classifier.qza \
   --i-reads rep-seqs.qza \
   --o-classification taxonomy.qza
+
+
+# Filter out Mitochondria and Chloroplast 
+qiime taxa filter-table \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
+
