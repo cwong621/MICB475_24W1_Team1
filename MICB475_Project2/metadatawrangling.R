@@ -7,11 +7,11 @@ meta <- read_delim(file="hiv_metadata.tsv", delim="\t")
 #### METADATA WRANGLING ####
 
 # define thresholds
-v2threshold <- 10000 #some sources say below 10000 is low if not on ART (may adjust later)
+v2threshold <- 25000 #some sources say below 10000 is low if not on ART (may adjust later)
 v3threshold <- 200 #CDC defines <200 as viral suppression under ART
 
 # clean HIV-1 viral load column and create response column
-meta_redef <- select(meta,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`, `CRP_mg_L`, `IL-6_pg_mL`,`CD4+_count`,`CD4+_Cat`, `CD4_CD103_Percent`, `CD4_PD1_Percent`, `CD4_HLADRpos_CD38pos_Percent`)%>%
+meta_redef <- select(meta,`sample-id`,`Cotrimoxazole_HIV`, `Arm_Short`, `BMI_Cat`,`Current_ART`, `Cotrimoxazole_HIV`,`Gender`, `PID`,`Cohort_Short`, `Visit`, `HIV-1_viral_load`, `CRP_mg_L`, `IL-6_pg_mL`,`CD4+_count`,`CD4+_Cat`, `CD4_CD103_Percent`, `CD4_PD1_Percent`, `CD4_HLADRpos_CD38pos_Percent`)%>%
   mutate(`HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_load`), "0", `HIV-1_viral_load`)) %>% #ND (not detectable) viral loads converted to 0
   mutate(`HIV-1_viral_load` = ifelse(grepl("Negative", `HIV-1_viral_load`), NA, `HIV-1_viral_load`)) %>% #values for HIV negative samples coverted to NA
   mutate(`HIV-1_viral_load` = as.numeric(`HIV-1_viral_load`)) %>%
@@ -20,17 +20,28 @@ meta_redef <- select(meta,`sample-id`,,`Gender`, `PID`,`Cohort_Short`, `Visit`, 
   filter(n()>1) %>% #remove individuals with only one visit
   ungroup() %>%
   mutate(response = case_when(
-    `Visit`==2 & `HIV-1_viral_load`<v2threshold ~ "HIV low", 
-    `Visit`==2 & `HIV-1_viral_load`>=v2threshold ~ "HIV high",
+    `Visit`==2 & `HIV-1_viral_load`<v2threshold & `Cohort_Short`=="A" ~ "HIV low pretreatment", 
+    `Visit`==2 & `HIV-1_viral_load`>=v2threshold & `Cohort_Short`=="A" ~ "HIV high pretreatment",
     `Visit`==3 & `HIV-1_viral_load`<v3threshold & `Cohort_Short`=="A" ~ "responsive",
     `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="A" ~ "nonresponsive",
-    `Visit`==3 & `HIV-1_viral_load`>=v3threshold & `Cohort_Short`=="B" ~ "experienced nonresponsive",
-    is.na(`HIV-1_viral_load`) ~ "negative"
+    `Visit`==3 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V3",
+    `Visit`==2 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V2",
+    is.na(`HIV-1_viral_load`) ~ "Healthy"
+  ))%>%
+  mutate(IL6_Cat = case_when( #create column categorizing IL6 level
+    `IL-6_pg_mL`<=5 ~ "normal",
+    `IL-6_pg_mL`>5 ~ "high"
+  ))%>%
+  mutate(CRP_Cat = case_when( #create column categorizing CRP level
+    `CRP_mg_L`<=3 ~ "normal",
+    `CRP_mg_L`>3 ~ "high"
   ))
 
-# save modified metadata file to uplaod to servrer
+# save modified metadata file to uplaod to server
 write.table(meta_redef, file="hiv_metadata_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
 
+table(meta_redef$response)
+table(meta_redef$Cohort_Short)
 # load manifest and filter samples to match redefined metadata
 manifest_filt <- read_delim(file="hiv_manifest.tsv", delim="\t") %>%
   subset(`sample-id` %in% meta_redef$`sample-id`)
