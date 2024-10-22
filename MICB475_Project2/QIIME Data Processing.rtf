@@ -47,3 +47,9 @@ qiime feature-table summarize \\\
 qiime feature-table tabulate-seqs \\\
   --i-data rep-seqs.qza \\\
   --o-visualization rep-seqs.qzv}
+
+# Taxonomic analysis - taxonomy.qza generation
+qiime feature-classifier classify-sklearn \
+  --i-classifier /mnt/datasets/classifiers/silva-138-99-515-806-nb-classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
