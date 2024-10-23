@@ -89,6 +89,7 @@ qiime diversity alpha-rarefaction \
   --o-visualization alpha-rarefaction.qzv
 
 
+
 ### Not run yet ###
 
 # final Alpha-rarefaction 
@@ -129,4 +130,27 @@ qiime diversity beta-group-significance \
   --m-metadata-column [FILL IN] \
   --o-visualization core-metrics-results/unweighted-unifrac-[FILL IN]-significance.qzv \
   --p-pairwise
+
+# create hiv_export directory
+#navigate to hiv_export directory
+
+# create files to export
+qiime tools export \
+--input-path ../table.qza \
+--output-path table_export 
+
+#navigate to table_export directory
+biom convert \
+-i feature-table.biom \
+--to-tsv \
+-o feature-table.txt
+
+#navigate back to hiv_export directory
+qiime tools export \
+  --input-path ../taxonomy.qza \
+  --output-path taxa_export 
+
+qiime tools export \
+  --input-path ../rooted-tree.qza \
+  --output-path tree_export 
 
