@@ -42,16 +42,18 @@ meta_redef <- mutate(meta, `HIV-1_viral_load` = ifelse(grepl("ND", `HIV-1_viral_
     `Visit`==2 & `Cohort_Short`=="B" ~ "ART-experienced nonresponsive V2",
     is.na(`HIV-1_viral_load`) ~ "Healthy"
   ))  %>%
-  group_by(`PID`) %>% 
-  mutate(across(`response_patient`, ~ coalesce(.x, first(.x, na_rm=TRUE))))%>% #apply response category to samples from both timepoints for same patient
   mutate(start_viral_load = case_when( #make column for starting viral load high/low
     `Visit`==2 & `HIV-1_viral_load`<v2threshold & `Cohort_Short`=="A" ~ "HIV low pretreatment", 
     `Visit`==2 & `HIV-1_viral_load`>=v2threshold & `Cohort_Short`=="A" ~ "HIV high pretreatment",
     `Visit`==2 & `Cohort_Short`=="B" ~ NA,
     is.na(`HIV-1_viral_load`) ~ "Healthy"
   )) %>%
-  mutate(across(`start_viral_load`, ~ coalesce(.x, first(.x,  na_rm=TRUE))))%>% #apply starting viral load category to samples from both timepoints for same patient
-  ungroup()
+  group_by(`PID`) %>% 
+  mutate(response_patient = ifelse(is.na(response_patient), na.locf(response_patient), response_patient)) %>% # assign response value to both timepoints
+  mutate(start_viral_load = ifelse(is.na(start_viral_load), na.locf(start_viral_load), start_viral_load)) %>% # assign start viral load value to both timepoints
+  ungroup() %>%
+  unite(response_patient_by_visit, response_patient, Visit, sep=" ", remove= F )%>% 
+  unite(start_viral_load_patient_by_visit, start_viral_load, Visit, sep=" ", remove = F)
 
 # save modified metadata file to uplaod to server
 write.table(meta_redef, file="hiv_metadata_filt.tsv", quote=FALSE, sep="\t", row.names=FALSE)
