@@ -148,9 +148,14 @@ biom convert \
 #navigate back to hiv_export directory
 qiime tools export \
   --input-path ../taxonomy.qza \
-  --output-path taxa_export 
+  --output-path taxonomy_export 
 
 qiime tools export \
   --input-path ../rooted-tree.qza \
-  --output-path tree_export 
+  --output-path rooted_tree_export 
+
+#copy filtered metadata to hiv_export directory
+cp ../hiv_metadata_filt.tsv .
+
+
 
