@@ -52,3 +52,22 @@ TAX <- tax_table(tax_mat)
 # Merge everything to create phyloseq object HIV
 
 HIV <- phyloseq(OTU, META, TAX, phylotree)
+
+# Remove non-bacterial sequences
+HIV_filt <- subset_taxa(HIV,  Domain == "d__Bacteria" & Class!="c__Chloroplast" & Family !="f__Mitochondria")
+
+# Remove ASVs that have less than 5 counts total
+HIV_filt_nolow <- filter_taxa(HIV_filt, function(x) sum(x)>5, prune = TRUE)
+
+# Remove samples with less than 100 reads
+HIV_filt_nolow_samps <- prune_samples(sample_sums(HIV_filt_nolow)>100, HIV_filt_nolow)
+
+HIV_final <- HIV_filt_nolow_samps
+
+# Rarefaction
+rarecurve(t(as.data.frame(otu_table(HIV_final))), cex=0.1)
+HIV_rare <- rarefy_even_depth(HIV_final, rngseed = 1, sample.size = 17000)
+
+#Save phyloseq
+save(HIV_final, file="HIV_final.RData")
+save(HIV_rare, file="HIV_rare.RData")
