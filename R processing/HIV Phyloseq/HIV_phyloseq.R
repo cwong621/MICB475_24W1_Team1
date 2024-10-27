@@ -14,7 +14,7 @@ otu <- read_delim(file="./hiv_export/table_export/feature-table.txt", delim = "\
 
 tax <- read_delim(file="./hiv_export/taxonomy_export/taxonomy.tsv", delim = "\t")
 
-phylotree <- read_delim("./hiv_export/rooted_tree_export/tree.nwk")
+phylotree <- read.tree("./hiv_export/rooted_tree_export/tree.nwk")
 
 # Format OTU table
 
