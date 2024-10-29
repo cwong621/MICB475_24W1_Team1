@@ -4,6 +4,7 @@
         - includes variations of the response column in case we want to use them
         <img width="767" alt="Screenshot 2024-10-29 at 8 01 46 AM" src="https://github.com/user-attachments/assets/6c2e4a88-4c32-4c25-a5cb-e0260e690f91">
 2. This week: run aim 3 analyses
+3. Discuss feedback from the proposal document?
 
 
 ## Tuesday October 22 Meeting Agenda/Minutes
