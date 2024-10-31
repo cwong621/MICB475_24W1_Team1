@@ -1,0 +1,42 @@
+# Indicator species analysis
+
+# Load libraries
+library(tidyverse)
+library(phyloseq)
+library(indicspecies)
+
+# Load data
+load("./HIV_final.RData")
+
+# glom to genus
+hiv_genus <- tax_glom(HIV_final, "Genus", NArm = FALSE)
+hiv_genus_RA <- transform_sample_counts(hiv_genus, fun=function(x) x/sum(x))
+
+# ISA patient response
+isa_response <- multipatt(t(otu_table(hiv_genus_RA)), cluster = sample_data(hiv_genus_RA)$`response_patient_by_visit`)
+taxtable_response <- tax_table(HIV_final) %>%
+  as.data.frame() %>%
+  rownames_to_column(var="ASV")
+
+isa_response_final <- isa_response$sign %>%
+  rownames_to_column(var="ASV") %>%
+  left_join(taxtable_response) %>%
+  filter(p.value<0.05)
+
+# ISA viral load
+isa_viral_load <- multipatt(t(otu_table(hiv_genus_RA)), cluster = sample_data(hiv_genus_RA)$`start_viral_load_patient_by_visit`)
+taxtable_viral_load <- tax_table(HIV_final) %>%
+  as.data.frame() %>%
+  rownames_to_column(var="ASV")
+
+isa_viral_load_final <- isa_viral_load$sign %>%
+  rownames_to_column(var="ASV") %>%
+  left_join(taxtable_viral_load) %>%
+  filter(p.value<0.05)
+
+# Common ASVs between patient response (x) and viral load (y)
+
+merged_isa <- merge(isa_response_final, isa_viral_load_final, by=c("ASV"), all=FALSE)
+
+
+
