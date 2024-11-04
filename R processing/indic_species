@@ -34,7 +34,7 @@ isa_viral_load_final <- isa_viral_load$sign %>%
   left_join(taxtable_viral_load) %>%
   filter(p.value<0.05)
 
-# Common ASVs between patient response (x) and viral load (y)
+# Common indicator taxa between patient response (x) and viral load (y)
 
 merged_isa <- merge(isa_response_final, isa_viral_load_final, by=c("ASV"), all=FALSE)
 
