@@ -1,7 +1,9 @@
 # MICB475_24W1_Team1
 ## Tuesday Nov 5 Meeting Agenda/Minutes
 1. Go over analyses
-
+   - DESEQ gives a lot of hits
+      - tried ANCOM, not sure about parameters: structural zeros?
+      - ALDEx2? Zicoseq?
    
 ## Tuesday October 29 Meeting Agenda/Minutes
 1. Last week: made phyloseq object
