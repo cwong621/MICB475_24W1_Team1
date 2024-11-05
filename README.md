@@ -1,4 +1,8 @@
 # MICB475_24W1_Team1
+## Tuesday Nov 5 Meeting Agenda/Minutes
+1. Go over analyses
+
+   
 ## Tuesday October 29 Meeting Agenda/Minutes
 1. Last week: made phyloseq object
         - includes variations of the response column in case we want to use them
