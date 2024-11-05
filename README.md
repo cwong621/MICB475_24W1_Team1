@@ -5,6 +5,9 @@
       - tried ANCOM, not sure about parameters: structural zeros?
       - ALDEx2? Zicoseq?
    - Taxa bar plots do not seem to show much of interest based on our two response columns - is there anything more that can be done?
+   - Alpha and Beta Diversity on R
+      - currently shannon and chao1, should we do Peliou's?
+      - Beta diversity groups to graph: individual or together? all diversity methods? 
    
 ## Tuesday October 29 Meeting Agenda/Minutes
 1. Last week: made phyloseq object
