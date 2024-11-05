@@ -1,0 +1,15 @@
+"ASV","s.Healthy 2","s.Healthy 3","s.HIV high pretreatment 2","s.HIV high pretreatment 3","s.HIV low pretreatment 2","s.HIV low pretreatment 3","s.NA 2","s.NA 3","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"572bd0736d362d06e1403ae5bdba0ada",0,0,0,0,0,0,0,1,8,0.436166448574225,0.025,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Mycoplasmatales","f__Mycoplasmataceae","g__Mycoplasma",NA
+"fa04a0fadb7872cf8c19b7e928542ff9",0,0,0,0,0,0,0,1,8,0.384883950739678,0.045,"d__Bacteria","p__Actinobacteriota","c__Actinobacteria","o__Bifidobacteriales","f__Bifidobacteriaceae","g__Gardnerella",NA
+"554c761996ebab999befda1b695fd81d",1,1,1,1,1,1,0,0,219,0.743294583788282,0.025,"d__Bacteria","p__Actinobacteriota","c__Actinobacteria","o__Bifidobacteriales","f__Bifidobacteriaceae","g__Bifidobacterium",NA
+"b48be4427da6aa203bef64478a70fcb6",0,0,0,0,0,0,1,0,7,0.414530304205237,0.03,"d__Bacteria","p__Desulfobacterota","c__Desulfovibrionia","o__Desulfovibrionales","f__Desulfovibrionaceae","g__Lawsonia","s__Lawsonia_intracellularis"
+"cd20981162ee39bff2a1f9a814a874a1",0,0,0,1,0,0,0,1,30,0.551923403302784,0.025,"d__Bacteria","p__Desulfobacterota","c__Desulfovibrionia","o__Desulfovibrionales","f__Desulfovibrionaceae","g__Mailhella","s__Desulfovibrio_sp."
+"041bdac7207444ff7021dc2e0a8cbb62",1,1,1,0,1,0,1,0,168,0.664877034192156,0.015,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Acholeplasmatales","f__Acholeplasmataceae","g__Anaeroplasma","s__uncultured_bacterium"
+"70643c32cc1b20b70d7b6121c76bf196",1,1,0,0,0,0,0,0,9,0.43542634539251,0.035,"d__Bacteria","p__Verrucomicrobiota","c__Lentisphaeria","o__Victivallales","f__Victivallaceae",NA,NA
+"c6f79f2291b931dc0de0f49de278ef23",0,0,0,0,0,0,0,1,8,0.418761355342012,0.035,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Caproiciproducens","s__uncultured_bacterium"
+"e1d2a9fa4aa3f8e81067cf362e0cd257",1,1,1,1,1,0,1,1,249,0.71109521899925,0.01,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__Turicibacter",NA
+"6e0ad855d65d067c8913ab5b28c49b76",0,0,0,1,0,0,1,0,29,0.33223754449521,0.04,"d__Bacteria","p__Fusobacteriota","c__Fusobacteriia","o__Fusobacteriales","f__Fusobacteriaceae","g__Cetobacterium","s__uncultured_bacterium"
+"7b0976f8022adcc58c0770e3ac755cc9",0,0,0,0,0,0,1,1,36,0.693495219135382,0.01,"d__Bacteria","p__Fusobacteriota","c__Fusobacteriia","o__Fusobacteriales","f__Fusobacteriaceae","g__Fusobacterium","s__Fusobacterium_mortiferum"
+"7e048b0e0c32d2f839e9f2098a4ebb35",1,1,1,1,1,0,1,1,249,0.609503388645029,0.03,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_FCS020_group","s__uncultured_organism"
+"3df3f3507535f086e675753cc4e7e7b5",0,0,0,0,0,0,1,1,36,0.642112951099913,0.005,"d__Bacteria","p__Firmicutes","c__Negativicutes","o__Veillonellales-Selenomonadales","f__Selenomonadaceae","g__Megamonas",NA
+"58c9d27620c4a8f749c75f945fce11a0",1,1,1,1,1,1,1,0,247,0.764039491896633,0.045,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__GCA-900066575","s__uncultured_bacterium"

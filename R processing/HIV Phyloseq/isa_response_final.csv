@@ -1,0 +1,11 @@
+"ASV","s.ART-experienced nonresponsive V2 2","s.ART-experienced nonresponsive V3 3","s.Healthy 2","s.Healthy 3","s.nonresponsive 2","s.nonresponsive 3","s.responsive 2","s.responsive 3","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"572bd0736d362d06e1403ae5bdba0ada",0,1,0,0,0,0,0,0,2,0.439434637938835,0.025,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Mycoplasmatales","f__Mycoplasmataceae","g__Mycoplasma",NA
+"554c761996ebab999befda1b695fd81d",0,0,1,1,1,1,1,1,246,0.74337088426018,0.03,"d__Bacteria","p__Actinobacteriota","c__Actinobacteria","o__Bifidobacteriales","f__Bifidobacteriaceae","g__Bifidobacterium",NA
+"041bdac7207444ff7021dc2e0a8cbb62",1,0,1,1,1,0,1,0,184,0.670890740275843,0.025,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Acholeplasmatales","f__Acholeplasmataceae","g__Anaeroplasma","s__uncultured_bacterium"
+"70643c32cc1b20b70d7b6121c76bf196",0,0,1,1,0,0,0,0,22,0.444214070284236,0.04,"d__Bacteria","p__Verrucomicrobiota","c__Lentisphaeria","o__Victivallales","f__Victivallaceae",NA,NA
+"98ff1f2b1008b5e0971997cd5070fc03",1,1,1,1,1,0,1,1,249,0.739248490317247,0.04,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Incertae_Sedis",NA
+"ecfbe1c714feb44628a8cbfebbcf44fd",0,0,1,1,1,0,1,1,215,0.589809823860004,0.04,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae",NA,NA
+"82abbfc55254ab4cdfededaf35e1ac55",1,1,1,1,1,0,1,1,249,0.697741930726331,0.015,"d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__uncultured",NA
+"e1d2a9fa4aa3f8e81067cf362e0cd257",1,1,1,1,1,1,0,0,219,0.741834366746769,0.005,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__Turicibacter",NA
+"7b0976f8022adcc58c0770e3ac755cc9",1,1,0,0,1,0,0,0,39,0.687544747719698,0.015,"d__Bacteria","p__Fusobacteriota","c__Fusobacteriia","o__Fusobacteriales","f__Fusobacteriaceae","g__Fusobacterium","s__Fusobacterium_mortiferum"
+"3df3f3507535f086e675753cc4e7e7b5",1,1,0,0,0,1,0,0,40,0.634745062649306,0.01,"d__Bacteria","p__Firmicutes","c__Negativicutes","o__Veillonellales-Selenomonadales","f__Selenomonadaceae","g__Megamonas",NA
