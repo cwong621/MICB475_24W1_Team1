@@ -4,6 +4,7 @@
    - DESEQ gives a lot of hits
       - tried ANCOM, not sure about parameters: structural zeros?
       - ALDEx2? Zicoseq?
+   - Taxa bar plots do not seem to show much of interest based on our two response columns - is there anything more that can be done?
    
 ## Tuesday October 29 Meeting Agenda/Minutes
 1. Last week: made phyloseq object
