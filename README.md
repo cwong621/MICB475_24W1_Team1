@@ -3,6 +3,10 @@
 1. Go over analyses
    - DESEQ gives a lot of hits
       - tried ANCOM, not sure about parameters: structural zeros?
+    ![ancomCD4lowNaive](https://github.com/user-attachments/assets/7f3d44f2-6f26-4155-b3d2-61913d7c4eb6)
+![ancomCD4midNaive](https://github.com/user-attachments/assets/45d7f835-a54c-4470-81e1-023cac99dc63)
+![ancomNaive](https://github.com/user-attachments/assets/8492f0b9-3421-4e9c-b29f-69a1e424e68d)
+
       - ALDEx2? Zicoseq?
    
 ## Tuesday October 29 Meeting Agenda/Minutes
