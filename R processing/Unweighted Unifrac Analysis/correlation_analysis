@@ -1,0 +1,80 @@
+## TRYING TO FIND PRINCIPAL COMPONENT VECTORS FROM unweighted_unifrac_emperor ##
+
+# Load libraries
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+
+# Load in unifrac distance matrix 
+unifrac_matrix <- read.table("./distance-matrix.tsv")
+
+# Perform PCA on unifrac distance matrix
+pca_result <- prcomp(unifrac_matrix, center = TRUE, scale.= TRUE)
+summary(pca_result)
+
+# Extract loadings (eigenvectors of PCA)
+loadings <- pca_result$rotation
+print(loadings)
+
+# Calculate the proportion of variance
+eigenvalues <- (pca_result$scale)^2
+proportion_variance <- eigenvalues/sum(eigenvalues)
+print(proportion_variance)
+
+# Visualize PCA plot with first two principal components
+pca_df <- data.frame(pca_result$x)
+ggplot(pca_df, aes(x = PC1, y = PC2)) +
+  geom_point() +
+  labs(x= "PC1", y = "PC2", title = "PCA of Unweighted Unifrac Matrix")
+
+## FIGURE OUT WHICH METADATA CATEGORY IS CAUSING THE CLUSTERING ##
+
+# Import metadata file
+metadata <- read.delim(file = "../hiv_metadata_filt.tsv", header = TRUE, sep = "\t")
+
+# Convert loadings matrix to dataframe and change sample id row names to a column
+loadings_df <- as.data.frame(loadings)
+loadings_final <- tibble::rownames_to_column(loadings_df, var = "sample.id")
+
+# Extract PC1 scores and merge with metadata
+pc1_scores <- loadings_final %>% select(c("sample.id", "PC1"))
+merged_data <- inner_join(metadata, pc1_scores, by = "sample.id")
+
+# Only select for numeric columns
+numeric_metadata <- merged_data %>% select(where(is.numeric))
+
+# Compute correlations with PC1
+correlations <- cor(numeric_metadata, use="complete.obs")["PC1", ]
+correlation_coefficient_df <- as.data.frame(correlations, row.names=NULL)
+sorted_correlation_coefficients <- arrange(correlation_coefficient_df, decreasing = TRUE)
+
+# Sort correlations to find the strongest positive and negative associations
+sorted_correlations <- sort(correlations, decreasing = TRUE)
+
+##########################################################
+
+# Visualization of relationships between metadata categories and PC1
+
+# HDL and PC1 correlation
+ggplot(merged_data, aes(x = `HDL_mg.dL`, y = PC1)) +
+  geom_point() +
+  theme_minimal()
+
+# LDL and PC1 correlation
+ggplot(merged_data, aes(x = `LDL_mg.dL`, y = PC1)) +
+  geom_point() +
+  theme_minimal()
+
+# Visit age and PC1 correlation
+ggplot(merged_data, aes(x = `Visit_Age`, y = PC1)) +
+  geom_point() +
+  theme_minimal()
+
+# Cortisol level and PC1 correlation
+ggplot(merged_data, aes(x = `Cortisol_ug_dL`, y = PC1)) +
+  geom_point() +
+  theme_minimal()
+
+# Export correlations as CSV
+
+write.csv(sorted_correlation_coefficients, "correlations_unweighted_unifrac.tsv")
