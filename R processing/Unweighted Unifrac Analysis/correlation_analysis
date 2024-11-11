@@ -45,8 +45,6 @@ numeric_metadata <- merged_data %>% select(where(is.numeric))
 
 # Compute correlations with PC1
 correlations <- cor(numeric_metadata, use="complete.obs")["PC1", ]
-correlation_coefficient_df <- as.data.frame(correlations, row.names=NULL)
-sorted_correlation_coefficients <- arrange(correlation_coefficient_df, decreasing = TRUE)
 
 # Sort correlations to find the strongest positive and negative associations
 sorted_correlations <- sort(correlations, decreasing = TRUE)
@@ -77,4 +75,4 @@ ggplot(merged_data, aes(x = `Cortisol_ug_dL`, y = PC1)) +
 
 # Export correlations as CSV
 
-write.csv(sorted_correlation_coefficients, "correlations_unweighted_unifrac.tsv")
+write.csv(sorted_correlations, "correlations_unweighted_unifrac.csv")
