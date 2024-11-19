@@ -1,4 +1,8 @@
 # MICB475_24W1_Team1
+## Tuesday Nov 19 Meeting Agenda/Minutes
+1. Go over left/right cohort split analyses
+2. Plan for functional analysis?
+
 ## Tuesday Nov 5 Meeting Agenda/Minutes
 1. Go over analyses
    - DESEQ gives a lot of hits
