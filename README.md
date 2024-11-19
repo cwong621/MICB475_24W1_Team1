@@ -7,7 +7,14 @@
    - Taxa bar plots do not seem to show much of interest based on our two response columns - is there anything more that can be done?
    - Alpha and Beta Diversity on R
       - currently shannon and chao1, should we do Peliou's?
-      - Beta diversity groups to graph: individual or together? all diversity methods? 
+      - Beta diversity groups to graph: individual or together? all diversity methods?
+    
+2. Discovered two clustered cohorts when looking at the unweighted unifrac emperor metric; the division is not associated with any of the metadata categories
+   - Decided to retry analyses once newly separated cohorts are obtained from teaching team to reduce confounding variables and see how/if our analyses change
+   - Most analyses generally did not show much of interest; DESeq showed some differential abundance, but likely influenced by false postives
+        - use ANCOM instead for more precision in data
+  
+3. Decided we will go through with the functional analysis once the analyses are reattempted
    
 ## Tuesday October 29 Meeting Agenda/Minutes
 1. Last week: made phyloseq object
