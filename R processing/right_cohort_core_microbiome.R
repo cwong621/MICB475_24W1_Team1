@@ -6,13 +6,13 @@ library(ggVennDiagram)
 library("sf")
 
 # Load data
-load("HIV Phyloseq/HIV_final.RData")
+load("HIV Phyloseq/rightphyloseq.RData")
 
 # See metadata
-SAMP <- sample_data(HIV_final)
+SAMP <- sample_data(ps_right)
 
 #convert phyloseq object to relative abundance
-HIV_final_RA <- transform_sample_counts(HIV_final, fun=function(x) x/sum(x))
+HIV_final_RA <- transform_sample_counts(ps_right, fun=function(x) x/sum(x))
 
 
 # Filter dataset (high load responsive before and after, low load responsive before and after, 
@@ -130,70 +130,71 @@ list_resp_nonresp_artexp <- list(responsive_after_ART = res_3_ASVs, nonresponsiv
 list_healthy_resp_nonresp_artexp <- list(Healthy = healthy_3_ASVs, responsive_after_ART = res_3_ASVs, nonresponsive_after_ART = nonres_3_ASVs, ART_experienced_nonresponsive = art_exp_nonres_3_ASVs)
 
 
-#### Create Venn Diagram directory ###
-dir.create("venn_diagrams")
+dir.create("venn_diagrams_right_cohort")
+
+
 
 
 ### Make a Venn-diagram ###
 
 #HIV high load responsive comparison visit 2 and 3
-venn_high_resp_2_and_3 <- ggVennDiagram(x = list_high_resp_2_and_3)
-ggsave("venn_diagrams/Venn HIV high responsive at visit 2 and 3.png", venn_high_resp_2_and_3)
+right_venn_high_resp_2_and_3 <- ggVennDiagram(x = list_high_resp_2_and_3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV high responsive at visit 2 and 3.png", right_venn_high_resp_2_and_3)
 
 #HIV low load responsive comparison visit 2 and 3
-venn_low_resp_2_and_3 <- ggVennDiagram(x = list_low_resp_2_and_3)
-ggsave("venn_diagrams/Venn HIV low responsive at visit 2 and 3.png", venn_low_resp_2_and_3)
+right_venn_low_resp_2_and_3 <- ggVennDiagram(x = list_low_resp_2_and_3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV low responsive at visit 2 and 3.png", right_venn_low_resp_2_and_3)
 
 #HIV high load nonresponsive comparison visit 2 and 3
-venn_high_nonresp_2_and_3 <- ggVennDiagram(x = list_high_nonresp_2_and_3)
-ggsave("venn_diagrams/Venn HIV high nonresponsive at visit 2 and 3.png", venn_high_nonresp_2_and_3)
+right_venn_high_nonresp_2_and_3 <- ggVennDiagram(x = list_high_nonresp_2_and_3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV high nonresponsive at visit 2 and 3.png", right_venn_high_nonresp_2_and_3)
 
 
 #HIV low load nonresponsive comparison visit 2 and 3
-venn_low_nonresp_2_and_3 <- ggVennDiagram(x = list_low_nonresp_2_and_3)
-ggsave("venn_diagrams/Venn HIV low nonresponsive at visit 2 and 3.png", venn_low_nonresp_2_and_3)
+right_venn_low_nonresp_2_and_3 <- ggVennDiagram(x = list_low_nonresp_2_and_3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV low nonresponsive at visit 2 and 3.png", right_venn_low_nonresp_2_and_3)
 
 
 #HIV high load responsive, nonresponsive, and healthy comparison at visit 3
-venn_HIV_high_healthy_resp_nonresp <- ggVennDiagram(x = list_HIV_high_healthy_resp_nonresp)
-ggsave("venn_diagrams/Venn HIV high responsive, nonresponsive and healthy at visit 3.png", venn_HIV_high_healthy_resp_nonresp)
+right_venn_HIV_high_healthy_resp_nonresp <- ggVennDiagram(x = list_HIV_high_healthy_resp_nonresp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV high responsive, nonresponsive and healthy at visit 3.png", right_venn_HIV_high_healthy_resp_nonresp)
 
 
 #HIV low load responsive, nonresponsive, and healthy comparison at visit 3
-venn_HIV_low_healthy_resp_nonresp <- ggVennDiagram(x = list_HIV_low_healthy_resp_nonresp)
-ggsave("venn_diagrams/Venn HIV low responsive, nonresponsive and healthy at visit 3.png", venn_HIV_low_healthy_resp_nonresp)
+right_venn_HIV_low_healthy_resp_nonresp <- ggVennDiagram(x = list_HIV_low_healthy_resp_nonresp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV low responsive, nonresponsive and healthy at visit 3.png", right_venn_HIV_low_healthy_resp_nonresp)
 
 
 #Responsive, nonresponsive, and healthy comparison at visit 3 (regardless of viral load)
-venn_healthy_resp_nonresp <- ggVennDiagram(x = list_healthy_resp_nonresp)
-ggsave("venn_diagrams/Venn Responsive, nonresponsive and healthy at visit 3.png", venn_healthy_resp_nonresp)
+right_venn_healthy_resp_nonresp <- ggVennDiagram(x = list_healthy_resp_nonresp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn Responsive, nonresponsive and healthy at visit 3.png", right_venn_healthy_resp_nonresp)
 
 
 #Healthy comparison at visit 2 and 3
-venn_healthy_2and3 <- ggVennDiagram(x = list_healthy_2and3)
-ggsave("venn_diagrams/Venn Healthy at visits 2 and 3.png", venn_healthy_2and3)
+right_venn_healthy_2and3 <- ggVennDiagram(x = list_healthy_2and3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn Healthy at visits 2 and 3.png", right_venn_healthy_2and3)
 
 
 #ART experienced nonresponsive comparison at visit 2 and 3
-venn_artexp_2and3 <- ggVennDiagram(x = list_artexp_2and3)
-ggsave("venn_diagrams/Venn ART experienced nonresponsive at visits 2 and 3.png", venn_artexp_2and3)
+right_venn_artexp_2and3 <- ggVennDiagram(x = list_artexp_2and3)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn ART experienced nonresponsive at visits 2 and 3.png", right_venn_artexp_2and3)
 
 
 #HIV high responsive, nonresponsive, and ART experienced at visit 3
-venn_high_resp_nonresp_artexp <- ggVennDiagram(x = list_high_resp_nonresp_artexp)
-ggsave("venn_diagrams/Venn HIV high responsive, nonresponsive, and ART experienced at visit 3.png", venn_high_resp_nonresp_artexp)
+right_venn_high_resp_nonresp_artexp <- ggVennDiagram(x = list_high_resp_nonresp_artexp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV high responsive, nonresponsive, and ART experienced at visit 3.png", right_venn_high_resp_nonresp_artexp)
 
 
 #HIV low responsive, nonresponsive, and ART experienced at visit 3
-venn_low_resp_nonresp_artexp <- ggVennDiagram(x = list_low_resp_nonresp_artexp)
-ggsave("venn_diagrams/Venn HIV low responsive, nonresponsive, and ART experienced at visit 3.png", venn_low_resp_nonresp_artexp)
+right_venn_low_resp_nonresp_artexp <- ggVennDiagram(x = list_low_resp_nonresp_artexp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn HIV low responsive, nonresponsive, and ART experienced at visit 3.png", right_venn_low_resp_nonresp_artexp)
 
 
 #Responsive, nonresponsive, and ART experienced at visit 3 (regardless of viral load)
-venn_resp_nonresp_artexp <- ggVennDiagram(x = list_resp_nonresp_artexp)
-ggsave("venn_diagrams/Venn Responsive, nonresponsive and ART experienced nonresponsive at visit 3.png", venn_resp_nonresp_artexp)
+right_venn_resp_nonresp_artexp <- ggVennDiagram(x = list_resp_nonresp_artexp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn Responsive, nonresponsive and ART experienced nonresponsive at visit 3.png", right_venn_resp_nonresp_artexp)
 
 
 #Healthy, responsive, nonresponsive, and ART experienced at visit 3 (regardless of viral load)
-venn_healthy_resp_nonresp_artexp <- ggVennDiagram(x = list_healthy_resp_nonresp_artexp)
-ggsave("venn_diagrams/Venn Responsive, nonresponsive, ART experienced nonresponsive, and Healthy at visit 3.png", venn_healthy_resp_nonresp_artexp)
+right_venn_healthy_resp_nonresp_artexp <- ggVennDiagram(x = list_healthy_resp_nonresp_artexp)
+ggsave("venn_diagrams_right_cohort/Right Cohort Venn Responsive, nonresponsive, ART experienced nonresponsive, and Healthy at visit 3.png", right_venn_healthy_resp_nonresp_artexp)
