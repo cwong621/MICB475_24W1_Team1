@@ -4,13 +4,6 @@
    - Re-run analyses for the separate cohorts?
 2. Plan for functional analysis?
 
-NOTES:
-
-Option for writing paper
-1. Write about both papers
-2. Choose one (left or right) cohort later, once all diversity metrics are completed - only add unwanted cohort analyses as supplemental
-3. Settle with one cohort for now (left) and write paper based on 
-
 ## Tuesday Nov 5 Meeting Agenda/Minutes
 1. Go over analyses
    - DESEQ gives a lot of hits
