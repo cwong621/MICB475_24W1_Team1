@@ -5,11 +5,12 @@
 2. Plan for functional analysis?
 
 NOTES:
+- Perform all pairwise comparisons using ANCOM between groups
 
 Option for writing paper
-1. Write about both papers
+1. Write about both cohorts, accounting for the confounding variable in our discussion, etc
 2. Choose one (left or right) cohort later, once all diversity metrics are completed - only add unwanted cohort analyses as supplemental
-3. Settle with one cohort for now (left) and write paper based on 
+3. Settle with one cohort for now (left) and write paper based on that, as it appears to have more interesting data. Will need to account for bias in the paper
 
 ## Tuesday Nov 5 Meeting Agenda/Minutes
 1. Go over analyses
