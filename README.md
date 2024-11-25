@@ -4,8 +4,8 @@
 1. Go over all analyses and decide on what to include in paper
 - ANCOM: <img width="913" alt="Screenshot 2024-11-25 at 2 10 25 PM" src="https://github.com/user-attachments/assets/b0a265da-10a3-46f2-b463-e8f1cc5f7208">
      Conclusions:
-       - ART responsive microbiomes more closely resemble healthy microbiomes
-      - nonresponsive individuals show further changes in the microbiome after ART/Cotri treatment
+     - ART responsive microbiomes more closely resemble healthy microbiomes
+     - nonresponsive individuals show further changes in the microbiome after ART/Cotri treatment
   
         
 ## Tuesday Nov 19 Meeting Agenda/Minutes
