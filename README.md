@@ -6,6 +6,52 @@
      Conclusions:
      - ART responsive microbiomes more closely resemble healthy microbiomes
      - nonresponsive individuals show further changes in the microbiome after ART/Cotri treatment
+ 
+Minutes/Notes:
+* Make diversity plot for the metric that showed how/where the cohorts were needed to be split in R
+* Make the weighted unifrac plot in R
+
+- Figure 1
+    - Beta diversity metrics (six panels total). Make them only color coded by the response_patient_by_visit so there are no shapes. Run PERMANOVA analysis on all of these
+        - Panel A) Unweighted unifrac (emperor) regenerated in R
+        - Keep it color-coded by your category to show that it is not dependent on our response category
+        - Panel B) Unweighted left cohort
+        - Panel C) Unweighted right cohort
+            - Top three panels on top of figure
+        - Panel DEF) whole, left, and right cohorts in weighted unifrac
+- Figure 2
+    - Faith’s PD alpha diversity (do kruskal-wallis stat testing)
+        - Panel A shows left cohort
+        - Panel B shows right cohort
+            -  (stacked on top of each other)
+            - We see non-responsive have lower diversity, similar to healthy group
+- Table 1
+    - ANCOM table
+        - Make healthy/responsive in rows (ie flip axes)
+            - Reference the actual outputs in the GitHub instead of putting it in the supplemental
+- Figure 3
+    - Core microbiome (make colors the same and normalize)
+        - Panel A)
+            - Left before (visit 2)
+        - Panel B)
+            - Left after (visit 3)
+        - Panel C)
+            - Right before (visit 2)
+        - Panel D)
+            - Right after (visit 3)
+    - Look into the organisms here in the literature to see where/if there is anything of note
+
+- Supplemental figures
+    * S1 is Chao1 and Shannon btw left and right cohorts
+    * S2 is taxa bar plots, two panels of left and right cohort
+        * Squish them into one taxa bar plot by doing averages of the samples per each group
+    * S(3?) Indicator taxa table?
+    * S(?) could be the heat maps
+        * Justifying why we thought this was a valuable avenue to explore
+
+- Keep in mind for the presentation that we should pick important panels for easy interpretation, maybe even do a heat map for the ancom results?
+- Put all figures into a single word doc for our last meeting to go thru each one
+- Can meet at the end of the week or Monday to discuss our powerpoint and give pointers
   
         
 ## Tuesday Nov 19 Meeting Agenda/Minutes
