@@ -42,6 +42,12 @@ res_3 <- subset_samples(HIV_final_RA, `response_patient_by_visit`=="responsive 3
 #nonresponsive visit 3 (regardless of viral load)
 nonres_3 <- subset_samples(HIV_final_RA, `response_patient_by_visit`=="nonresponsive 3")
 
+#responsive visit 2 (regardless of viral load)
+res_2 <- subset_samples(HIV_final_RA, `response_patient_by_visit`=="responsive 2")
+#nonresponsive visit 2 (regardless of viral load)
+nonres_2 <- subset_samples(HIV_final_RA, `response_patient_by_visit`=="nonresponsive 2")
+
+
 #Healthy at visit 2
 healthy_2 <- subset_samples(HIV_final_RA, `response_patient_by_visit`=="Healthy 2" & `start_viral_load_patient_by_visit`=="Healthy 2")
 #Healthy at visit 3
@@ -75,6 +81,10 @@ res_3_ASVs <- core_members(res_3, detection=0.001, prevalence=0.5)
 #nonresponsive visit 3 (regardless of viral load)
 nonres_3_ASVs <- core_members(nonres_3, detection=0.001, prevalence=0.5)
 
+#responsive visit 2 (regardless of viral load)
+res_2_ASVs <- core_members(res_3, detection=0.001, prevalence=0.5)
+#nonresponsive visit 2 (regardless of viral load)
+nonres_2_ASVs <- core_members(nonres_3, detection=0.001, prevalence=0.5)
 
 #Healthy at visit 2
 healthy_2_ASVs <- core_members(healthy_2, detection=0.001, prevalence=0.5)
@@ -96,11 +106,17 @@ list_high_resp_2_and_3 <- list(HIV_high_responsive_before_ART = high_res_2_ASVs,
 #HIV low load responsive comparison visit 2 and 3
 list_low_resp_2_and_3 <- list(HIV_low_responsive_before_ART = low_res_2_ASVs, HIV_low_responsive_after_ART = low_res_3_ASVs)
 
+#Responsive comparison visit 2 and 3
+list_resp_2_and_3 <- list(responsive_before_ART = res_2_ASVs, responsive_after_ART = res_3_ASVs)
+
 #HIV high load nonresponsive comparison visit 2 and 3
 list_high_nonresp_2_and_3 <- list(HIV_high_nonresponsive_before_ART = high_nonres_2_ASVs, HIV_high_nonresponsive_after_ART = high_nonres_3_ASVs)
 
 #HIV low load nonresponsive comparison visit 2 and 3
 list_low_nonresp_2_and_3 <- list(HIV_low_nonresponsive_before_ART = low_nonres_2_ASVs, HIV_low_nonresponsive_after_ART = low_nonres_3_ASVs)
+
+#Nonresponsive comparison visit 2 and 3
+list_nonresp_2_and_3 <- list(nonresponsive_before_ART = nonres_2_ASVs, nonresponsive_after_ART = nonres_3_ASVs)
 
 #HIV high load responsive, nonresponsive, and healthy comparison at visit 3
 list_HIV_high_healthy_resp_nonresp <- list(HIV_high_nonresponsive_after_ART = high_nonres_3_ASVs, HIV_high_responsive_after_ART = high_res_3_ASVs, Healthy = healthy_3_ASVs)
@@ -129,6 +145,14 @@ list_resp_nonresp_artexp <- list(responsive_after_ART = res_3_ASVs, nonresponsiv
 #Healthy, responsive, nonresponsive, and ART experienced at visit 3 (regardless of viral load)
 list_healthy_resp_nonresp_artexp <- list(Healthy = healthy_3_ASVs, responsive_after_ART = res_3_ASVs, nonresponsive_after_ART = nonres_3_ASVs, ART_experienced_nonresponsive = art_exp_nonres_3_ASVs)
 
+#Responsive, nonresponsive, and ART experienced at visit 2 (regardless of viral load)
+list_resp_nonresp_artexp_2 <- list(responsive_after_ART = res_2_ASVs, nonresponsive_after_ART = nonres_2_ASVs, ART_experienced_nonresponsive = art_exp_nonres_2_ASVs)
+
+#Healthy, responsive, nonresponsive, and ART experienced at visit 2 (regardless of viral load)
+list_healthy_resp_nonresp_artexp_2 <- list(Healthy = healthy_2_ASVs, responsive_after_ART = res_2_ASVs, nonresponsive_after_ART = nonres_2_ASVs, ART_experienced_nonresponsive = art_exp_nonres_2_ASVs)
+
+#Responsive, nonresponsive, and healthy comparison at visit 2
+list_healthy_resp_nonresp_2 <- list(nonresponsive_after_ART = nonres_2_ASVs, responsive_after_ART = res_2_ASVs, Healthy = healthy_2_ASVs)
 
 #### Create Venn Diagram directory ###
 dir.create("venn_diagrams_left_cohort")
@@ -197,3 +221,28 @@ ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive, nonresponsive and
 #Healthy, responsive, nonresponsive, and ART experienced at visit 3 (regardless of viral load)
 left_venn_healthy_resp_nonresp_artexp <- ggVennDiagram(x = list_healthy_resp_nonresp_artexp)
 ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive, nonresponsive, ART experienced nonresponsive, and Healthy at visit 3.png", left_venn_healthy_resp_nonresp_artexp)
+
+
+#Responsive, nonresponsive, and ART experienced at visit 2 (regardless of viral load)
+left_venn_resp_nonresp_artexp_2 <- ggVennDiagram(x = list_resp_nonresp_artexp_2)
+ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive, nonresponsive and ART experienced nonresponsive at visit 2.png", left_venn_resp_nonresp_artexp_2)
+
+#Healthy, responsive, nonresponsive, and ART experienced at visit 2 (regardless of viral load)
+left_venn_healthy_resp_nonresp_artexp_2 <- ggVennDiagram(x = list_healthy_resp_nonresp_artexp_2)
+ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive, nonresponsive, ART experienced nonresponsive, and Healthy at visit 2.png", left_venn_healthy_resp_nonresp_artexp_2)
+
+#Responsive, nonresponsive, and healthy comparison at visit 2
+left_venn_healthy_resp_nonresp_2 <- ggVennDiagram(x = list_healthy_resp_nonresp_2)
+ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive, nonresponsive, and Healthy at visit 2.png", left_venn_healthy_resp_nonresp_2)
+
+
+#Nonresponsive comparison visit 2 and 3
+left_venn_nonresp_2_and_3 <- ggVennDiagram(x = list_nonresp_2_and_3)
+ggsave("venn_diagrams_left_cohort/Left Cohort Venn Nonresponsive at visit 2 and 3.png", left_venn_nonresp_2_and_3)
+
+
+#Responsive comparison visit 2 and 3
+left_venn_resp_2_and_3 <- ggVennDiagram(x = list_resp_2_and_3)
+ggsave("venn_diagrams_left_cohort/Left Cohort Venn Responsive at visit 2 and 3.png", left_venn_resp_2_and_3)
+
+
