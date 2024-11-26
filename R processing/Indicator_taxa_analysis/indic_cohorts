@@ -8,16 +8,16 @@ library(indicspecies)
 
 ########## LEFT COHORT #############
 
-# Load left cohort data
-load("./HIV_left_final.RData")
+# Load left cohort data (not rarefied)
+load("./leftphyloseq.RData")
 
 # glom to genus
-left_genus <- tax_glom(HIV_left_final, "Genus", NArm = FALSE)
+left_genus <- tax_glom(ps_left, "Genus", NArm = FALSE)
 left_genus_RA <- transform_sample_counts(left_genus, fun=function(x) x/sum(x))
 
 # ISA patient response (left)
 isa_response_left <- multipatt(t(otu_table(left_genus_RA)), cluster = sample_data(left_genus_RA)$`response_patient_by_visit`)
-taxtable_response_left <- tax_table(HIV_left_final) %>%
+taxtable_response_left <- tax_table(ps_left) %>%
   as.data.frame() %>%
   rownames_to_column(var="ASV")
 
@@ -28,7 +28,7 @@ isa_response_left_final <- isa_response_left$sign %>%
 
 # ISA viral load (left)
 isa_viral_load_left <- multipatt(t(otu_table(left_genus_RA)), cluster = sample_data(left_genus_RA)$`start_viral_load_patient_by_visit`)
-taxtable_response_left <- tax_table(HIV_left_final) %>%
+taxtable_response_left <- tax_table(ps_left) %>%
   as.data.frame() %>%
   rownames_to_column(var="ASV")
 
@@ -40,16 +40,16 @@ isa_viral_load_left_final <- isa_viral_load_left$sign %>%
 ########## RIGHT COHORT ##############
 
 # Load right cohort data
-load("./HIV_right_final.RData")
+load("./rightphyloseq.RData")
 
 # glom to genus
-right_genus <- tax_glom(HIV_right_final, "Genus", NArm = FALSE)
+right_genus <- tax_glom(ps_right, "Genus", NArm = FALSE)
 right_genus_RA <- transform_sample_counts(right_genus, fun=function(x) x/sum(x))
 
 
 # ISA patient response (right)
 isa_response_right <- multipatt(t(otu_table(right_genus_RA)), cluster = sample_data(right_genus_RA)$`response_patient_by_visit`)
-taxtable_response_right <- tax_table(HIV_right_final) %>%
+taxtable_response_right <- tax_table(ps_right) %>%
   as.data.frame() %>%
   rownames_to_column(var="ASV")
 
@@ -60,7 +60,7 @@ isa_response_right_final <- isa_response_right$sign %>%
 
 # ISA viral load (right)
 isa_viral_load_right <- multipatt(t(otu_table(right_genus_RA)), cluster = sample_data(right_genus_RA)$`start_viral_load_patient_by_visit`)
-taxtable_response_right <- tax_table(HIV_right_final) %>%
+taxtable_response_right <- tax_table(ps_right) %>%
   as.data.frame() %>%
   rownames_to_column(var="ASV")
 
@@ -69,3 +69,7 @@ isa_viral_load_right_final <- isa_viral_load_right$sign %>%
   left_join(taxtable_response_right) %>%
   filter(p.value<0.05)
 
+######## WRITE CSVS ###########
+
+write.csv(isa_response_left_final, "isa_response_left_final.csv")
+write.csv(isa_response_right_final, "isa_response_right_final.csv")
