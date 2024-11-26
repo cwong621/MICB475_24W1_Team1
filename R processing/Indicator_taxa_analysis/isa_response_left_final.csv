@@ -1,0 +1,5 @@
+"","ASV","s.ART-experienced nonresponsive V2 2","s.ART-experienced nonresponsive V3 3","s.Healthy 2","s.Healthy 3","s.nonresponsive 2","s.nonresponsive 3","s.responsive 2","s.responsive 3","index","stat","p.value","Domain","Phylum","Class","Order","Family","Genus","Species"
+"1","36c35a629bc9e0cea2e548fa4710d5ac",1,0,0,0,0,0,0,0,1,0.644404814872715,0.015,"d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Angelakisella","s__uncultured_bacterium"
+"2","e1d2a9fa4aa3f8e81067cf362e0cd257",1,1,1,1,1,1,1,0,247,0.81266012182985,0.01,"d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__Turicibacter",NA
+"3","c7b6d61adfc74f746361e203b891b56c",0,1,0,0,0,0,0,0,2,0.707106781186548,0.04,"d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Burkholderiales","f__Rhodocyclaceae",NA,NA
+"4","85b4d7d480ef06ef2844b93115d87480",0,1,0,0,0,0,0,0,2,0.774677071877994,0.025,"d__Bacteria","p__Firmicutes","c__Negativicutes","o__Veillonellales-Selenomonadales","f__Veillonellaceae","g__Megasphaera",NA
