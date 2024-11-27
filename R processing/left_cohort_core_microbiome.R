@@ -125,7 +125,7 @@ list_HIV_high_healthy_resp_nonresp <- list(HIV_high_nonresponsive_after_ART = hi
 list_HIV_low_healthy_resp_nonresp <- list(HIV_low_nonresponsive_after_ART = low_nonres_3_ASVs, HIV_low_responsive_after_ART = low_res_3_ASVs, Healthy = healthy_3_ASVs)
 
 #Responsive, nonresponsive, and healthy comparison at visit 3
-list_healthy_resp_nonresp <- list(nonresponsive_after_ART = nonres_3_ASVs, responsive_after_ART = res_3_ASVs, Healthy = healthy_3_ASVs)
+list_healthy_resp_nonresp <- list(Nonresponsive = nonres_3_ASVs, Responsive = res_3_ASVs, Healthy = healthy_3_ASVs)
 
 #Healthy comparison at visit 2 and 3
 list_healthy_2and3 <- list(healthy_visit_2 = healthy_2_ASVs, healthy_visit_3 = healthy_3_ASVs)
@@ -152,7 +152,7 @@ list_resp_nonresp_artexp_2 <- list(responsive_after_ART = res_2_ASVs, nonrespons
 list_healthy_resp_nonresp_artexp_2 <- list(Healthy = healthy_2_ASVs, responsive_after_ART = res_2_ASVs, nonresponsive_after_ART = nonres_2_ASVs, ART_experienced_nonresponsive = art_exp_nonres_2_ASVs)
 
 #Responsive, nonresponsive, and healthy comparison at visit 2
-list_healthy_resp_nonresp_2 <- list(nonresponsive_after_ART = nonres_2_ASVs, responsive_after_ART = res_2_ASVs, Healthy = healthy_2_ASVs)
+list_healthy_resp_nonresp_2 <- list(Nonresponsive = nonres_2_ASVs, Responsive = res_2_ASVs, Healthy = healthy_2_ASVs)
 
 #### Create Venn Diagram directory ###
 dir.create("venn_diagrams_left_cohort")
