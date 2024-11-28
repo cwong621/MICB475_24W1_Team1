@@ -1,0 +1,10 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"25d727166a36df8d2f6a915a945bf5ac","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides","s__Bacteroides_stercoris"
+"2cdb259b754c2db622ed9fb5a6517a37","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Tannerellaceae","g__Parabacteroides","s__Parabacteroides_distasonis"
+"504b5f0d2545c712940d4b9772a89711","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_ND3007_group","s__metagenome"
+"51e441cbdcc80da0656e82293ae160b5","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides",NA
+"5fdacbfd74abb06f94f87f7c539c6246","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides",NA
+"c1e6a3b26cc7d12c8f7e22ebb092e001","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides",NA
+"ec4075339e16f5cd45fd5a7955596899","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides",NA
+"f0607d2c57afe6bb25bd64afa9869e28","d__Bacteria","p__Firmicutes","c__Clostridia","o__Clostridiales","f__Clostridiaceae","g__Clostridium_sensu_stricto_1",NA
+"fcd2073fc9628403d2dc4aa2b66b64a5","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae",NA,NA

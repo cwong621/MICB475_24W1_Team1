@@ -1,0 +1,14 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"0d6bce2909152ecd402d6905c94ac4e9","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__UCG-002","s__uncultured_rumen"
+"271f32e6393144a5cd488294859b0ff6","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_NK4A136_group",NA
+"33d591dd6da939cd5ffa983ad2b49280","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Prevotella","s__Massiliprevotella_massiliensis"
+"504b5f0d2545c712940d4b9772a89711","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_ND3007_group","s__metagenome"
+"7859f0d526ad56fb4d8383d136b3bae6","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Faecalibacterium","s__metagenome"
+"a0b7d83fb64749f9a4b15b3728425b97","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Coprococcus",NA
+"afd87e82de329a1ed75b98b5b606843c","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Dorea","s__uncultured_Dorea"
+"b2dbe23d1835464c24ba161ffe22a6e8","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__UCG-005",NA
+"bd3c45d86ab338880235c8db92437c9e","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__UCG-005",NA
+"d6960828e54e3b0059ec5cdf24b16d2f","d__Bacteria","p__Firmicutes","c__Negativicutes","o__Veillonellales-Selenomonadales","f__Veillonellaceae","g__Dialister",NA
+"e7a23b2ba274773c7b5bf7994c883c9a","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Fournierella","s__uncultured_bacterium"
+"e8120a2c1c4a6888ab33d17a033a6a56","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__UCG-005",NA
+"fc2eeb02cc0e0e7f598b88912ae6c891","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Coprococcus","s__metagenome"

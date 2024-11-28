@@ -1,0 +1,16 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"0088553fbbbf2fbc8918ad224557d65c","d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Burkholderiales","f__Sutterellaceae","g__Sutterella",NA
+"1d38c3d3e21b0567dac79cc36187431a","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Alloprevotella","s__Prevotellaceae_bacterium"
+"3cfa76e0da34a56a641ca33770efb588","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__[Eubacterium]_eligens_group",NA
+"3ea67969a01ec419ec1d4784d379ad1d","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Marinifilaceae","g__Odoribacter",NA
+"504b5f0d2545c712940d4b9772a89711","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_ND3007_group","s__metagenome"
+"8468e308e3ff23c41059c416ba2b2676","d__Bacteria","p__Firmicutes","c__Negativicutes","o__Acidaminococcales","f__Acidaminococcaceae","g__Phascolarctobacterium","s__uncultured_Veillonellaceae"
+"877cbd485e8e00858a551153bb630d8e","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Colidextribacter",NA
+"8e90ac2f0df6304022cff8cd278f8218","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospira",NA
+"8f131eee7dee47756b211b843cf274ea","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_NK4A136_group","s__gut_metagenome"
+"a231814083060142816974207844eff2","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Rikenellaceae","g__Alistipes","s__Alistipes_shahii"
+"b5273023863d8556eae399fbe127bfa1","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Ruminococcus","s__Clostridiaceae_bacterium"
+"e17d964cd0fd8c2ddbd1dacfa8b536e3","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Tannerellaceae","g__Parabacteroides","s__Parabacteroides_merdae"
+"f95cab37fba4160de15015f4d520839f","d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelatoclostridiaceae","g__Erysipelotrichaceae_UCG-003",NA
+"f9dbac64aa8ab140fb3e75ddf907051e","d__Bacteria","p__Firmicutes","c__Bacilli","o__Erysipelotrichales","f__Erysipelotrichaceae","g__Holdemanella","s__uncultured_bacterium"
+"faebf7aa9e3c2906d9f3dc8922dc0e8c","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Tannerellaceae","g__Parabacteroides","s__Parabacteroides_sp."

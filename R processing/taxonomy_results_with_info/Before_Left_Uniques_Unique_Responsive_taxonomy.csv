@@ -1,0 +1,4 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"68da0b64bb1e81cd71ba2b535ac41577","d__Bacteria","p__Firmicutes","c__Clostridia","o__Clostridia_vadinBB60_group","f__Clostridia_vadinBB60_group","g__Clostridia_vadinBB60_group","s__gut_metagenome"
+"c1e6a3b26cc7d12c8f7e22ebb092e001","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides",NA
+"fb798da6858b8b3f34077164a4ec9315","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnospiraceae_NK4A136_group",NA

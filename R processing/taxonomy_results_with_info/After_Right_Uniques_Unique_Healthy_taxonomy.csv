@@ -1,0 +1,7 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"2cad9fc22fd99d0c6d900977f522b2d9","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Bacteroidaceae","g__Bacteroides","s__Bacteroides_plebeius"
+"33d591dd6da939cd5ffa983ad2b49280","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Prevotella","s__Massiliprevotella_massiliensis"
+"5610b04f19aaac78ac2469a3feb707e9","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__[Eubacterium]_eligens_group",NA
+"6a0bbfe5241c80e0f4e91b06fe4715c7","d__Bacteria","p__Firmicutes","c__Clostridia","o__Clostridiales","f__Clostridiaceae","g__Clostridium_sensu_stricto_1",NA
+"a0b7d83fb64749f9a4b15b3728425b97","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Coprococcus",NA
+"afd87e82de329a1ed75b98b5b606843c","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Dorea","s__uncultured_Dorea"

@@ -1,0 +1,12 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"262ba8fff46ca0c6fee6af217feea7df","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__uncultured","s__gut_metagenome"
+"5c16f395e6a01cc1ba41708eb651976f","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Prevotellaceae","g__Alloprevotella","s__uncultured_organism"
+"695c9e2ccda52b6a3be3919ec8052986","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__UCG-010","g__UCG-010","s__metagenome"
+"6f8461f38f17b163a804fac9e3e67b89","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__[Eubacterium]_coprostanoligenes_group","g__[Eubacterium]_coprostanoligenes_group","s__uncultured_bacterium"
+"8f98fb8693ed59c21399d83ce2d10724","d__Bacteria","p__Verrucomicrobiota","c__Verrucomicrobiae","o__Verrucomicrobiales","f__Akkermansiaceae","g__Akkermansia",NA
+"9f8668eb1c5f9d9a992dd49245db090e","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Blautia","s__metagenome"
+"a4e94137d3eea12b54dec05caedafe47","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnoclostridium",NA
+"b5273023863d8556eae399fbe127bfa1","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__Ruminococcus","s__Clostridiaceae_bacterium"
+"ce90f4c42d8e5a7db6399f9a1b5215de","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Oscillospiraceae","g__Colidextribacter","s__uncultured_Clostridia"
+"e47a63686b619f67783f9b9aa52b86bf","d__Bacteria","p__Bacteroidota","c__Bacteroidia","o__Bacteroidales","f__Rikenellaceae","g__Alistipes","s__uncultured_Alistipes"
+"fc02af89d869043b296114729009a5b0","d__Bacteria","p__Firmicutes","c__Clostridia","o__Oscillospirales","f__Ruminococcaceae","g__CAG-352","s__uncultured_bacterium"

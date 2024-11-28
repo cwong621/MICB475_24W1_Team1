@@ -1,0 +1,9 @@
+"ASV_ID","Domain","Phylum","Class","Order","Family","Genus","Species"
+"6a0bbfe5241c80e0f4e91b06fe4715c7","d__Bacteria","p__Firmicutes","c__Clostridia","o__Clostridiales","f__Clostridiaceae","g__Clostridium_sensu_stricto_1",NA
+"981d9dbb4041e6e95ae1202308fda899","d__Bacteria","p__Proteobacteria","c__Gammaproteobacteria","o__Burkholderiales","f__Sutterellaceae","g__Sutterella",NA
+"9f8668eb1c5f9d9a992dd49245db090e","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Blautia","s__metagenome"
+"a4e94137d3eea12b54dec05caedafe47","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Lachnoclostridium",NA
+"d6960828e54e3b0059ec5cdf24b16d2f","d__Bacteria","p__Firmicutes","c__Negativicutes","o__Veillonellales-Selenomonadales","f__Veillonellaceae","g__Dialister",NA
+"db8e959b880d856d2d4da134a444851a","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae",NA,NA
+"dffa04ca171f459056b9466d7acfe601","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__[Ruminococcus]_gauvreauii_group",NA
+"fc2eeb02cc0e0e7f598b88912ae6c891","d__Bacteria","p__Firmicutes","c__Clostridia","o__Lachnospirales","f__Lachnospiraceae","g__Coprococcus","s__metagenome"
