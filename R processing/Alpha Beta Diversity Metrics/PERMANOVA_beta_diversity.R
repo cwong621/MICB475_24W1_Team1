@@ -5,8 +5,8 @@ library(vegan)
 library(tidyverse)
 
 # Load data
-load("./split_cohorts/leftphyloseq_rare.RData")
-load("./split_cohorts/rightphyloseq_rare.RData")
+load("./leftphyloseq_rare.RData")
+load("./rightphyloseq_rare.RData")
 
 # Adding phylogenetic distance to phyloseq objects
 
