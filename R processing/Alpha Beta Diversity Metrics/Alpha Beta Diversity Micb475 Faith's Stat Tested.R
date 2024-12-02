@@ -81,13 +81,13 @@ sample_data(leftphyloseq_rare)$PD <- phylo_dist_left$PD
 faith_reponse_right_plot.pd <- ggplot(sample_data(rightphyloseq_rare), aes(response_patient_by_visit, PD)) + 
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Response Status by Visit") +
+  xlab("Right Cohort Response Status") +
   ylab("Phylogenetic Diversity")
 
 faith_reponse_left_plot.pd <- ggplot(sample_data(leftphyloseq_rare), aes(response_patient_by_visit, PD)) + 
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Response Status by Visit") +
+  xlab("Left Cohort Response Status") +
   ylab("Phylogenetic Diversity")
 
 # view plots
@@ -119,19 +119,36 @@ summary(anova_left_pd_vs_rpbv_logtrsfm)
 # Seeing which comparison is significant
 TukeyHSD(anova_left_pd_vs_rpbv_logtrsfm)
 
-# Annotating the plot to include significance measure from Kruskal-Wallis (and ANOVA)
+### Generating polished plots with statistical test annotations
 
-faith_reponse_left_plot.pd <- ggplot(leftphylo_dat_wdiv, aes(response_patient_by_visit, PD, ylim =40)) + 
+# Filtering the data to not include the ART-experienced nonresponsive cohort
+leftphylo_dat_wdiv_noARTexpV2 <- filter(leftphylo_dat_wdiv, response_patient_by_visit != "ART-experienced nonresponsive V2 2")
+leftphylo_dat_wdiv_noARTexp <- filter(leftphylo_dat_wdiv_noARTexpV2, response_patient_by_visit != "ART-experienced nonresponsive V3 3")
+
+faith_reponse_left_plot.pd <- ggplot(leftphylo_dat_wdiv_noARTexp, aes(response_patient_by_visit, PD, ylim =40)) + 
   geom_boxplot() +
   geom_signif(comparisons = list(c("nonresponsive 3","Healthy 2")),
               y_position = c(30),
               annotations = c("*")) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Response Status by Visit") +
-  ylim(c(10,32)) +    #tweaked the axis a bit since the asterisk was getting cut off
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  xlab("Left Cohort Response Status") +
+  ylim(c(10,32)) + #tweaked the axis a bit since the asterisk was getting cut off
   ylab("Phylogenetic Diversity")
 
 faith_reponse_left_plot.pd
+
+# Filtering the right plot to not include the ART-experienced group as well
+rightphylo_dat_wdiv_noARTexpV2 <- filter(rightphylo_dat_wdiv, response_patient_by_visit != "ART-experienced nonresponsive V2 2")
+rightphylo_dat_wdiv_noARTexp <- filter(rightphylo_dat_wdiv_noARTexpV2, response_patient_by_visit != "ART-experienced nonresponsive V3 3")
+
+# Regenerating right plot without that ART-experienced group
+faith_reponse_right_plot.pd <- ggplot(rightphylo_dat_wdiv_noARTexp, aes(response_patient_by_visit, PD)) + 
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  xlab("Right Cohort Response Status") +
+  ylab("Phylogenetic Diversity")
+
+faith_reponse_right_plot.pd
 
 ############
 
@@ -142,7 +159,8 @@ ggsave(filename = "plot_faith_reponse_richness_right.png"
 
 ggsave(filename = "plot_faith_reponse_richness_left.png"
        , faith_reponse_left_plot.pd
-       , height=5, width=6)
+       , height=5, width=6
+       , )
 
 
 ###### BETA DIVERSITY #########
