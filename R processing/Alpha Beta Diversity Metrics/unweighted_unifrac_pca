@@ -1,0 +1,20 @@
+# Load libraries
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+
+# Load in unifrac distance matrix 
+unifrac_matrix <- read.table("./distance-matrix.tsv")
+
+# Perform PCA on unifrac distance matrix
+pcoa_result <- cmdscale(as.dist(unifrac_matrix), eig = TRUE, k=2)
+pcoa_coords <- as.data.frame(pcoa_result$points)
+colnames(pcoa_coords) <- c("PC1", "PC2")
+
+# Plot PCA plot
+ggplot(pcoa_coords, aes(x= PC1, y = PC2)) +
+  geom_point(size=3, alpha=0.8) +
+  labs(title="PCoA Plot",
+       x = paste0("PC1 (", round(pcoa_result$eig[1] / sum(pcoa_result$eig) * 100, 2), "%)"),
+       y = paste0("PC2 (", round(pcoa_result$eig[2] / sum(pcoa_result$eig) * 100, 2), "%)")) +
+  ggtitle("Unweighted Unifrac PCoA Plot")
