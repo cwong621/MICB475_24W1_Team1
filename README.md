@@ -2,6 +2,7 @@
 
 ## Tuesday Dec 3 Meeting Agenda/Minutes
 1. Look through alpha diversity metrics - should we include Chao1 and Shannon in our manuscript in addition to Faith's?
+2. Functional analysis
 
 ## Tuesday Nov 26 Meeting Agenda/Minutes
 1. Go over all analyses and decide on what to include in paper
