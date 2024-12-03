@@ -1,5 +1,8 @@
 # Load libraries
-
+install.packages("gridExtra")
+install.packages("cowplot")
+library(gridExtra)
+library(cowplot)
 library(phyloseq)
 library(ape)
 library(tidyverse)
@@ -14,17 +17,13 @@ load("HIV_rare.RData")
 load("leftphyloseq_rare.RData")
 load("rightphyloseq_rare.RData")
 
-# response_patient_by_visit
-
 # Alpha Diversity
 
 plot_right <- plot_richness(rightphyloseq_rare)
 
-plot_richness(rightphyloseq_rare, measures = c("Shannon","Chao1")) 
-
+# plot_richness(rightphyloseq_rare, measures = c("Shannon","Chao1")) 
 
 plot_left <- plot_richness(leftphyloseq_rare)
-
 
 
 alpha_response_richness_right <- plot_richness(rightphyloseq_rare, x = "response_patient_by_visit", measures = c("Shannon","Chao1")) +
@@ -46,23 +45,12 @@ ggsave(filename = "chao1_shannon_alpha_response_richness_left.png"
        , alpha_response_richness_left
        , height=5, width=6)
 
-
-# alpha_viral_load_richness <- plot_richness(HIV_rare, x = "start_viral_load_patient_by_visit", measures = c("Shannon","Chao1")) +
-  # xlab("Initial Viral Load by Visit") +
-  # geom_boxplot()
-#alpha_viral_load_richness
-
-
-#ggsave(filename = "plot_alpha_viral_load_richness.png"
-#       , alpha_viral_load_richness
-#       , height=5, width=6)
-
-
+# etimate richness
 alpha_right <- estimate_richness(rightphyloseq_rare)
 alpha_left <- estimate_richness(leftphyloseq_rare)
 
 
-# phylogenetic diversity
+######## phylogenetic diversity ##############
 
 # calculate Faith's phylogenetic diversity as PD
 phylo_dist_right <- pd(t(otu_table(rightphyloseq_rare)), phy_tree(rightphyloseq_rare),
@@ -81,13 +69,13 @@ sample_data(leftphyloseq_rare)$PD <- phylo_dist_left$PD
 faith_reponse_right_plot.pd <- ggplot(sample_data(rightphyloseq_rare), aes(response_patient_by_visit, PD)) + 
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Right Cohort Response Status") +
+  xlab("Response Status by Visit") +
   ylab("Phylogenetic Diversity")
 
 faith_reponse_left_plot.pd <- ggplot(sample_data(leftphyloseq_rare), aes(response_patient_by_visit, PD)) + 
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  xlab("Left Cohort Response Status") +
+  xlab("Response Status by Visit") +
   ylab("Phylogenetic Diversity")
 
 # view plots
@@ -119,36 +107,18 @@ summary(anova_left_pd_vs_rpbv_logtrsfm)
 # Seeing which comparison is significant
 TukeyHSD(anova_left_pd_vs_rpbv_logtrsfm)
 
-### Generating polished plots with statistical test annotations
-
-# Filtering the data to not include the ART-experienced nonresponsive cohort
-leftphylo_dat_wdiv_noARTexpV2 <- filter(leftphylo_dat_wdiv, response_patient_by_visit != "ART-experienced nonresponsive V2 2")
-leftphylo_dat_wdiv_noARTexp <- filter(leftphylo_dat_wdiv_noARTexpV2, response_patient_by_visit != "ART-experienced nonresponsive V3 3")
-
-faith_reponse_left_plot.pd <- ggplot(leftphylo_dat_wdiv_noARTexp, aes(response_patient_by_visit, PD, ylim =40)) + 
+# Annotating the plot to include significance measure from Kruskal-Wallis (and ANOVA)
+faith_reponse_left_plot.pd <- ggplot(leftphylo_dat_wdiv, aes(response_patient_by_visit, PD, ylim =40)) + 
   geom_boxplot() +
   geom_signif(comparisons = list(c("nonresponsive 3","Healthy 2")),
               y_position = c(30),
               annotations = c("*")) +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  xlab("Left Cohort Response Status") +
-  ylim(c(10,32)) + #tweaked the axis a bit since the asterisk was getting cut off
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  xlab("Response Status by Visit") +
+  ylim(c(10,32)) +    #tweaked the axis a bit since the asterisk was getting cut off
   ylab("Phylogenetic Diversity")
 
 faith_reponse_left_plot.pd
-
-# Filtering the right plot to not include the ART-experienced group as well
-rightphylo_dat_wdiv_noARTexpV2 <- filter(rightphylo_dat_wdiv, response_patient_by_visit != "ART-experienced nonresponsive V2 2")
-rightphylo_dat_wdiv_noARTexp <- filter(rightphylo_dat_wdiv_noARTexpV2, response_patient_by_visit != "ART-experienced nonresponsive V3 3")
-
-# Regenerating right plot without that ART-experienced group
-faith_reponse_right_plot.pd <- ggplot(rightphylo_dat_wdiv_noARTexp, aes(response_patient_by_visit, PD)) + 
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  xlab("Right Cohort Response Status") +
-  ylab("Phylogenetic Diversity")
-
-faith_reponse_right_plot.pd
 
 ############
 
@@ -159,8 +129,7 @@ ggsave(filename = "plot_faith_reponse_richness_right.png"
 
 ggsave(filename = "plot_faith_reponse_richness_left.png"
        , faith_reponse_left_plot.pd
-       , height=5, width=6
-       , )
+       , height=5, width=6)
 
 
 ###### BETA DIVERSITY #########
@@ -232,23 +201,19 @@ ggsave("plot_beta_jaccard_response_left_pcoa.png"
 
 
 ############### Unweighted Unifrac Beta Diversity ##############################
-?distance
 
 # whole cohort
+uu_distance_whole <- UniFrac(HIV_rare, weighted = FALSE )
 
-uu_dm_whole <- distance(HIV_rare, method = "uunifrac")
-
-uu_distance <- UniFrac(HIV_rare, weighted = FALSE, normalized = TRUE, parallel = FALSE)
-# both of the codes abovegive the same output and error
-
-pcoa_uu_whole <- ordinate(HIV_rare, method="PCoA", distance=uu_dm_whole)
+pcoa_uu_whole <- ordinate(HIV_rare, method="PCoA", distance=uu_distance_whole)
 
 plot_ordination(HIV_rare, pcoa_uu_whole, color = "response_patient_by_visit")
 
-gg_unweighted_unifrac_pcoa_whole <- plot_ordination(HIV_rare, pcoa_uu_whole, color = "response_patient_by_visit", axes = c(1,2)) +
-  labs(col = "Response Status by Visit") +
-  stat_ellipse()
-
+gg_unweighted_unifrac_pcoa_whole <- plot_ordination(HIV_rare, pcoa_uu_whole, color = "response_patient_by_visit") +
+  labs(col = "Response Status by Visit", title = "Unweighted Unifrac Whole Cohort") +
+  stat_ellipse() 
+  
+  
 gg_unweighted_unifrac_pcoa_whole
 
 ggsave("plot_beta_unweighted_unifrac_response_whole_pcoa.png"
@@ -257,14 +222,14 @@ ggsave("plot_beta_unweighted_unifrac_response_whole_pcoa.png"
 
 
 #right cohort
-uu_dm_right <- distance(rightphyloseq_rare, "uunifrac")
+uu_dm_right <- UniFrac(rightphyloseq_rare, weighted = FALSE)
 
 pcoa_uu_right <- ordinate(rightphyloseq_rare, method="PCoA", distance=uu_dm_right)
 
 plot_ordination(rightphyloseq_rare, pcoa_uu_right, color = "response_patient_by_visit")
 
 gg_unweighted_unifrac_pcoa_right <- plot_ordination(rightphyloseq_rare, pcoa_uu_right, color = "response_patient_by_visit") +
-  labs(col = "Response Status by Visit") +
+  labs(col = "Response Status by Visit", title = "Unweighted Unifrac Right Cohort") +
   stat_ellipse()
 
 gg_unweighted_unifrac_pcoa_right
@@ -275,14 +240,17 @@ ggsave("plot_beta_unweighted_unifrac_response_right_pcoa.png"
 
 
 #left cohort
-uu_dm_left <- distance(leftphyloseq_rare, method="uunifrac")
+
+uu_dm_left <- UniFrac(leftphyloseq_rare, weighted = FALSE)
+
+uu_left_distance <- distance(leftphyloseq_rare, method="unifrac")
 
 pcoa_uu_left <- ordinate(leftphyloseq_rare, method="PCoA", distance=uu_dm_left)
 
 plot_ordination(leftphyloseq_rare, pcoa_uu_left, color = "response_patient_by_visit")
 
 gg_unweighted_unifrac_pcoa_left <- plot_ordination(leftphyloseq_rare, pcoa_uu_left, color = "response_patient_by_visit") +
-  labs(col = "Response Status by Visit") +
+  labs(col = "Response Status by Visit", title = "Unweighted Unifrac Left Cohort") +
   stat_ellipse()
 
 gg_unweighted_unifrac_pcoa_left
@@ -297,14 +265,14 @@ ggsave("plot_beta_unweighted_unifrac_response_left_pcoa.png"
 
 #################### weighted unifrac beta diversity ###########################
 # whole
-wu_dm_whole <- distance(HIV_rare, method="wunifrac")
+wu_dm_whole <- UniFrac(HIV_rare, weighted = TRUE)
 
 pcoa_wu_whole <- ordinate(HIV_rare, method="PCoA", distance=wu_dm_whole)
 
 plot_ordination(HIV_rare, pcoa_wu_whole, color = "response_patient_by_visit")
 
 gg_weighted_unifrac_pcoa_whole <- plot_ordination(HIV_rare, pcoa_wu_whole, color = "response_patient_by_visit") +
-  labs(col = "Response Status by Visit") +
+  labs(col = "Response Status by Visit", title = "Weighted Unifrac Whole Cohort") +
   stat_ellipse()
 
 gg_weighted_unifrac_pcoa_whole
@@ -316,14 +284,14 @@ ggsave("plot_beta_weighted_unifrac_response_whole_pcoa.png"
 
 
 # right cohort
-wu_dm_right <- distance(rightphyloseq_rare, method="wunifrac")
+wu_dm_right <- UniFrac(rightphyloseq_rare, weighted = TRUE)
 
 pcoa_wu_right <- ordinate(rightphyloseq_rare, method="PCoA", distance=wu_dm_right)
 
 plot_ordination(rightphyloseq_rare, pcoa_wu_right, color = "response_patient_by_visit")
 
 gg_weighted_unifrac_pcoa_right <- plot_ordination(rightphyloseq_rare, pcoa_wu_right, color = "response_patient_by_visit") +
-  labs(col = "Response Status by Visit") +
+  labs(col = "Response Status by Visit", title = "Weighted Unifrac Right Cohort") +
   stat_ellipse()
 
 gg_weighted_unifrac_pcoa_right
@@ -335,14 +303,14 @@ ggsave("plot_beta_weighted_unifrac_response_right_pcoa.png"
 
 
 # left
-wu_dm_left <- distance(leftphyloseq_rare, method="wunifrac")
+wu_dm_left <- UniFrac(leftphyloseq_rare, weighted = TRUE)
 
 pcoa_wu_left <- ordinate(leftphyloseq_rare, method="PCoA", distance=wu_dm_left)
 
 plot_ordination(leftphyloseq_rare, pcoa_wu_left, color = "response_patient_by_visit")
 
 gg_weighted_unifrac_pcoa_left <- plot_ordination(leftphyloseq_rare, pcoa_wu_left, color = "response_patient_by_visit") +
-  labs(col = "Response Status by Visit") +
+  labs(col = "Response Status by Visit", title = "Weighted Unifrac Left Cohort") +
   stat_ellipse()
 
 gg_weighted_unifrac_pcoa_left
@@ -352,3 +320,40 @@ ggsave("plot_beta_weighted_unifrac_response_left_pcoa.png"
        , height=5, width=7)
 
 
+####### PANEL FIGURE ######
+
+# extract legend
+#legend <- get_legend(gg_unweighted_unifrac_pcoa_left + theme(legend.position = "right"))
+
+legend_2 = cowplot::get_plot_component(gg_unweighted_unifrac_pcoa_left, 'guide-box-right', return_all = TRUE)
+cowplot::ggdraw(legend_2)
+
+# Arrange the plots in a 2x3 grid
+# figure_1 <- grid.arrange(grobs = plot_list, nrow = 2, ncol = 3)
+beta_diversity_panel_uu_wu <- grid.arrange(
+  arrangeGrob(
+    gg_unweighted_unifrac_pcoa_whole + theme(legend.position = "none"), 
+              gg_unweighted_unifrac_pcoa_left + theme(legend.position = "none"), 
+              gg_unweighted_unifrac_pcoa_right + theme(legend.position = "none"), 
+              gg_weighted_unifrac_pcoa_whole + theme(legend.position = "none"), 
+              gg_weighted_unifrac_pcoa_left + theme(legend.position = "none"), 
+              gg_weighted_unifrac_pcoa_right + theme(legend.position = "none"), 
+              nrow = 2, ncol = 3), nrow = 2,
+              heights = c(20, 1)  # Adjust heights to give more space to plots
+)
+
+ggsave("beta_diversity_panel_uu_wu.png", plot = beta_diversity_panel_uu_wu, width = 10, height = 6)
+
+beta_diversity_panel_left_right <- grid.arrange(
+  arrangeGrob(
+    gg_unweighted_unifrac_pcoa_left + theme(legend.position = "none"), 
+    gg_unweighted_unifrac_pcoa_right + theme(legend.position = "none"), 
+    gg_weighted_unifrac_pcoa_left + theme(legend.position = "none"), 
+    gg_weighted_unifrac_pcoa_right + theme(legend.position = "none"), 
+    nrow = 2, ncol = 2), nrow = 2,
+  heights = c(20, 1)  # Adjust heights to give more space to plots
+)
+
+ggsave("beta_diversity_panel_left_right.png", plot = beta_diversity_panel_left_right, width = 8, height = 6)
+
+ggsave("legend.png", legend_2, width = 5, height = 3)
