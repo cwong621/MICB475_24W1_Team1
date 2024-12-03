@@ -61,3 +61,19 @@ plot_ordination(rightphyloseq_rare, pcoa_jc_right, color = "response_patient_by_
 
 adonis2(jc_dm_right ~ `response_patient_by_visit`*`start_viral_load_patient_by_visit`, data = sample_data_right_wPD)
 
+######### PERMANOVA ON UNWEIGHTED UNIFRAC ########
+
+# calculate distance matrix right
+uu_dm_right <- UniFrac(rightphyloseq_rare, weighted = FALSE)
+pcoa_uu_right <- ordinate(rightphyloseq_rare, method="PCoA", distance=uu_dm_right)
+plot_ordination(rightphyloseq_rare, pcoa_uu_right, color = "response_patient_by_visit")
+
+adonis2(uu_dm_right ~ `response_patient_by_visit`*`start_viral_load_patient_by_visit`, data = sample_data_right_wPD)
+
+# calculate distance matrix left
+uu_dm_left <- UniFrac(leftphyloseq_rare, weighted = FALSE)
+pcoa_uu_left <- ordinate(leftphyloseq_rare, method="PCoA", distance=uu_dm_left)
+plot_ordination(leftphyloseq_rare, pcoa_uu_left, color = "response_patient_by_visit")
+
+adonis2(uu_dm_left ~ `response_patient_by_visit`*`start_viral_load_patient_by_visit`, data = sample_data_left_wPD)
+
