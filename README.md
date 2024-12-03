@@ -5,6 +5,47 @@
 2. Functional analysis
 
    <img width="412" alt="Screenshot 2024-12-03 at 10 34 09 AM" src="https://github.com/user-attachments/assets/596eed04-15ac-4f2c-b3cf-470a43ada9c1">
+Minutes/Notes:
+- Change response group names to be week 0 and week 24
+
+- Only jaccard in beta div metrics had significant comparisons:
+    - Weighted/unweighted show nothing significant
+
+
+
+S1: qiime picture of the two cohorts (Caitlin’s R recreation)
+- dw about it being pretty
+- Mention in the methods
+
+S2: Taxa bar plots
+
+
+Figure 1:
+- six panels beta diversity, left right, left right of unweighted unifrac (to keep continuity of the metric), weighted unifrac, and jaccard
+    - We can’t observe distinct clusters, but statistical analysis hints there may be some
+
+Figure 2:
+- Alpha diversity, shannon’s and Faith
+    - Four panels, AB left right, CD left right.
+        - AB Faith’s
+        - CD Shannon
+            - Could perhaps comment on the responsive people having similar diversity to each other (in left cohort)
+
+Table 1 of ANCOM results
+
+Table 2 summary of PICRUST
+    - Set healthy as the reference
+
+Figure 4:
+- Left cohort: two panels of nonresponsive versus healthy (before and after)
+    - look into these pathways to see if these pathway results are expected
+
+(Table 2 and fig 4 go together in one results section)
+
+
+Discussion:
+    - Try to build a biological model of what is significant before and after
+    - Don’t explain too much into the division of the cohorts, just that we split it and one cohort is interesting
 
 
 ## Tuesday Nov 26 Meeting Agenda/Minutes
