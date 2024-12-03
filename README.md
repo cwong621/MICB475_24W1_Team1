@@ -1,5 +1,8 @@
 # MICB475_24W1_Team1
 
+## Tuesday Dec 3 Meeting Agenda/Minutes
+1. Look through alpha diversity metrics - should we include Chao1 and Shannon in our manuscript in addition to Faith's?
+
 ## Tuesday Nov 26 Meeting Agenda/Minutes
 1. Go over all analyses and decide on what to include in paper
 - ANCOM: <img width="913" alt="Screenshot 2024-11-25 at 2 10 25 PM" src="https://github.com/user-attachments/assets/b0a265da-10a3-46f2-b463-e8f1cc5f7208">
