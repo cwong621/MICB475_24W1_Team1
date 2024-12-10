@@ -237,12 +237,12 @@ adjust_set_labels <- function(plot) {
       legend.position = "right",                         # Keep legend consistent
       plot.margin = margin(20, 20, 20, 20)               # Add margin to prevent cutoff
     ) +
-    scale_fill_gradient(low = "white", high = "blue")    # Normalize color gradient
+    scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31))    # Normalize color gradient
 }
 
 # Before ART - Both Cohorts
 venn_before_both <- ggVennDiagram(list_before_both) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "Before ART - Both Cohorts") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -254,7 +254,7 @@ ggsave("venn_diagrams_normalized/Before_ART_Both_Cohorts.png", venn_before_both)
 
 # After ART - Both Cohorts
 venn_after_both <- ggVennDiagram(list_after_both) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "After ART - Both Cohorts") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -266,7 +266,7 @@ ggsave("venn_diagrams_normalized/After_ART_Both_Cohorts.png", venn_after_both)
 
 # Before ART - Left Cohort
 venn_before_left <- ggVennDiagram(list_before_left) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "Before ART - Left Cohort") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -278,7 +278,7 @@ ggsave("venn_diagrams_normalized/Before_ART_Left_Cohort.png", venn_before_left)
 
 # After ART - Left Cohort
 venn_after_left <- ggVennDiagram(list_after_left) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "After ART - Left Cohort") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -290,7 +290,7 @@ ggsave("venn_diagrams_normalized/After_ART_Left_Cohort.png", venn_after_left)
 
 # Before ART - Right Cohort
 venn_before_right <- ggVennDiagram(list_before_right) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "Before ART - Right Cohort") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -302,7 +302,7 @@ ggsave("venn_diagrams_normalized/Before_ART_Right_Cohort.png", venn_before_right
 
 # After ART - Right Cohort
 venn_after_right <- ggVennDiagram(list_after_right) +
-  scale_fill_gradient(low = "white", high = "blue") +
+  scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
   labs(title = "After ART - Right Cohort") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
