@@ -89,9 +89,6 @@ qiime diversity alpha-rarefaction \
   --o-visualization alpha-rarefaction.qzv
 
 
-
-### Not run yet ###
-
 # final Alpha-rarefaction 
 qiime diversity alpha-rarefaction \
   --i-table table.qza \
@@ -100,12 +97,13 @@ qiime diversity alpha-rarefaction \
   --m-metadata-file /data/hiv/hiv_metadata_filt.tsv \
   --o-visualization alpha-rarefaction.qzv
 
-# Calculate alpha and beta diversity metrics
+
+# Calculate alpha- and beta-diversity metrics
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
   --i-table table-no-mitochondria-no-chloroplast.qza \
-  --p-sampling-depth [CHOSEN SEQ DEPTH] \
-  --m-metadata-file /data/hiv/hiv_metadata_filt.tsv \
+  --p-sampling-depth 17000 \
+  --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
   --output-dir core-metrics-results
 
 
@@ -113,23 +111,34 @@ qiime diversity core-metrics-phylogenetic \
 
 qiime diversity alpha-group-significance \
   --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
-  --m-metadata-file /data/hiv/hiv_metadata_filt.tsv \
+  --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
   --o-visualization core-metrics-results/faith-pd-group-significance.qzv
 
 qiime diversity alpha-group-significance \
   --i-alpha-diversity core-metrics-results/evenness_vector.qza \
-  --m-metadata-file /data/hiv/hiv_metadata_filt.tsv \
+  --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
   --o-visualization core-metrics-results/evenness-group-significance.qzv
 
 
-# Calculate beta-group-significance. This code for all columns of interest -> [FILL IN]
+
+# Calculate beta-group-significance
 
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
-  --m-metadata-file /data/hiv/hiv_metadata_filt.tsv \
-  --m-metadata-column [FILL IN] \
-  --o-visualization core-metrics-results/unweighted-unifrac-[FILL IN]-significance.qzv \
+  --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
+  --m-metadata-column response_patient_by_visit \
+  --o-visualization core-metrics-results/unweighted_unifrac_response_group_significance.qzv \
   --p-pairwise
+
+# Calculate beta-group-significance
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
+  --m-metadata-column start_viral_load_patient_by_visit \
+  --o-visualization core-metrics-results/unweighted_unifrac_viral_load_significance.qzv \
+  --p-pairwise
+
+
 
 # create hiv_export directory
 #navigate to hiv_export directory
