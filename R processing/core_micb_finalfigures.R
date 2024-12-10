@@ -235,7 +235,7 @@ adjust_set_labels <- function(plot) {
       plot.title = element_text(hjust = 0.5, size = 14),  # Center and resize title
       text = element_text(size = 12),                    # Adjust overall text size
       legend.position = "right",                         # Keep legend consistent
-      plot.margin = margin(20, 20, 20, 20)               # Add margin to prevent cutoff
+      plot.margin = margin(20, 20, 20, 40)               # Add margin to prevent cutoff
     ) +
     scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31))    # Normalize color gradient
 }
@@ -248,7 +248,7 @@ venn_before_both <- ggVennDiagram(list_before_both) +
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/Before_ART_Both_Cohorts.png", venn_before_both)
 
@@ -260,54 +260,69 @@ venn_after_both <- ggVennDiagram(list_after_both) +
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/After_ART_Both_Cohorts.png", venn_after_both)
 
 # Before ART - Left Cohort
 venn_before_left <- ggVennDiagram(list_before_left) +
   scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
-  labs(title = "Before ART - Left Cohort") +
+  labs(title = "0 Weeks - Cohort A") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/Before_ART_Left_Cohort.png", venn_before_left)
 
 # After ART - Left Cohort
 venn_after_left <- ggVennDiagram(list_after_left) +
   scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
-  labs(title = "After ART - Left Cohort") +
+  labs(title = "24 Weeks - Cohort A") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/After_ART_Left_Cohort.png", venn_after_left)
 
 # Before ART - Right Cohort
 venn_before_right <- ggVennDiagram(list_before_right) +
   scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
-  labs(title = "Before ART - Right Cohort") +
+  labs(title = "0 Weeks - Cohort B") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/Before_ART_Right_Cohort.png", venn_before_right)
 
 # After ART - Right Cohort
 venn_after_right <- ggVennDiagram(list_after_right) +
   scale_fill_gradient(low = "white", high = "blue", limits = c(0, 31)) +
-  labs(title = "After ART - Right Cohort") +
+  labs(title = "24 Weeks - Cohort B") +
   theme(
     plot.title = element_text(hjust = 0.5, size = 14),
     text = element_text(size = 12),
     legend.position = "right",
-    plot.margin = margin(20, 20, 20, 20)
+    plot.margin = margin(20, 20, 20, 40)
   )
 ggsave("venn_diagrams_normalized/After_ART_Right_Cohort.png", venn_after_right)
+
+
+# Load libraries for making combined figure
+library(ggVennDiagram)
+library(patchwork)
+
+# Combine the diagrams into a figure
+combined_plot <- (venn_before_left | venn_after_left) / (venn_before_right | venn_after_right) +
+  plot_layout(guides = "collect") # Share legend across plots
+
+# Display the combined plot
+print(combined_plot)
+
+# Save the combined plot as a single image
+ggsave("venn_diagrams_normalized/venn_diagrams_panel.png", combined_plot, width = 16, height = 16)
