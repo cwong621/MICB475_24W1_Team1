@@ -31,10 +31,14 @@ left_summ_renamed <- mutate(left_summ,
                                              "nonresponsive 3" = "Nonresponsive (Week 24)",
                                              "responsive 2" = "Responsive (Week 0)",
                                              "responsive 3" = "Responsive (Week 24)") )
+## Filtering out ART-experienced samples
+left_summ_renamed_noARTexpV2 <- filter(left_summ_renamed, response_patient_by_visit != "ART-Experienced Nonresponsive (Week 0)")
+left_summ_renamed_noARTexp <- filter(left_summ_renamed_noARTexpV2, response_patient_by_visit != "ART-Experienced Nonresponsive (Week 24)")
+
 
 ## Creating the taxa bar plot for the response of each patient
 
-gg_taxa_rpbv_left <- ggplot(left_summ_renamed, aes(x=response_patient_by_visit, y=Abundance, fill=Phylum)) +
+gg_taxa_rpbv_left <- ggplot(left_summ_renamed_noARTexp, aes(x=response_patient_by_visit, y=Abundance, fill=Phylum)) +
   geom_bar(color="black", stat="identity", position="fill") +
   theme(axis.text.x = element_text(angle=90, hjust = 1)) +
   xlab(NULL)
@@ -43,7 +47,7 @@ gg_taxa_rpbv_left
 # Saving the plot as a .png
 ggsave("plot_taxonomy_rpbv_left_summary.png"
        , gg_taxa_rpbv_left
-       , height=8, width =15)
+       , height=8, width =8)
 
 
 ## Right
@@ -64,11 +68,14 @@ right_summ_renamed <- mutate(right_summ,
                                                                "nonresponsive 3" = "Nonresponsive (Week 24)",
                                                                "responsive 2" = "Responsive (Week 0)",
                                                                "responsive 3" = "Responsive (Week 24)") )
+# Filtering out ART-experienced samples
+right_summ_renamed_noARTexpV2 <- filter(right_summ_renamed, response_patient_by_visit != "ART-Experienced Nonresponsive (Week 0)")
+right_summ_renamed_noARTexp <- filter(right_summ_renamed_noARTexpV2, response_patient_by_visit != "ART-Experienced Nonresponsive (Week 24)")
 
 
 ## Creating the taxa bar plot for the response of each patient
 
-gg_taxa_rpbv_right <- ggplot(right_summ_renamed, aes(x=response_patient_by_visit, y=Abundance, fill=Phylum)) +
+gg_taxa_rpbv_right <- ggplot(right_summ_renamed_noARTexp, aes(x=response_patient_by_visit, y=Abundance, fill=Phylum)) +
   geom_bar(color="black", stat="identity", position="fill")+
   theme(axis.text.x = element_text(angle=90, hjust = 1)) +
   xlab(NULL)
@@ -77,15 +84,15 @@ gg_taxa_rpbv_right
 # Saving the plot as a .png
 ggsave("plot_taxonomy_rpbv_right_summary.png"
        , gg_taxa_rpbv_right
-       , height=8, width =15)
+       , height=8, width =8)
 
 
-## Making the plots into one panel
+## Making the plots into one panel -> the right panel will be squished
 
 taxabar_paneled <- grid.arrange(
   arrangeGrob(
     gg_taxa_rpbv_left + theme(legend.position = "none", plot.title = element_text(hjust = 0)) + labs(title = bquote(bold("A"))), 
-    gg_taxa_rpbv_right + theme(legend.position = "none", plot.title = element_text(hjust = 0)) + labs(title = bquote(bold("B"))),
+    gg_taxa_rpbv_right + theme(legend.position = "right", plot.title element_text(hjust = 0)) + labs(title = bquote(bold("B"))),
     nrow = 2, ncol = 2), nrow = 2,
   heights = c(15, 1),
   widths = c(10, 1)# Adjust heights to give more space to plots
