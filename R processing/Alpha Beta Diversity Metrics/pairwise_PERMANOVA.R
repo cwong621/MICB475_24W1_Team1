@@ -1,6 +1,8 @@
 ###### Running a pairwise PERMANOVA on Jaccard left cohort ######
 
 # Load libraries
+install.packages(“devtools”)
+devtools::install_github(“pmartinezarbizu/pairwiseAdonis/pairwiseAdonis)
 library(pairwiseAdonis)
 library(dplyr)
 library(ggplot2)
