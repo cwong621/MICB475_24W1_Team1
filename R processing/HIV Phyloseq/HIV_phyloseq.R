@@ -71,3 +71,17 @@ HIV_rare <- rarefy_even_depth(HIV_final, rngseed = 1, sample.size = 17000)
 #Save phyloseq
 save(HIV_final, file="HIV_final.RData")
 save(HIV_rare, file="HIV_rare.RData")
+
+# Subset unrarefied phyloseq into left/right cohort
+left <- read_delim("left cohort.csv", delim=",")
+right <- read_delim("right cohort.csv", delim=",")
+ps_right <- subset_samples(HIV_final, `original.sample.id` %in% right$original.sample.id)
+ps_left <- subset_samples(HIV_final, `original.sample.id` %in% left$original.sample.id)
+save(ps_right, file="rightphyloseq.RData")
+save(ps_left, file="leftphyloseq.RData")
+
+# Subset rarefied phyloseq into left/right cohort
+ps_right_rare <- subset_samples(HIV_rare, `original.sample.id` %in% right$original.sample.id)
+ps_left_rare <- subset_samples(HIV_rare, `original.sample.id` %in% left$original.sample.id)
+save(ps_right_rare, file="rightphyloseq_rare.RData")
+save(ps_left_rare, file="leftphyloseq_rare.RData")
