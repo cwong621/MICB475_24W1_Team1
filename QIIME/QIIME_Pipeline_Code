@@ -120,9 +120,7 @@ qiime diversity alpha-group-significance \
   --o-visualization core-metrics-results/evenness-group-significance.qzv
 
 
-
 # Calculate beta-group-significance
-
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
@@ -130,14 +128,12 @@ qiime diversity beta-group-significance \
   --o-visualization core-metrics-results/unweighted_unifrac_response_group_significance.qzv \
   --p-pairwise
 
-# Calculate beta-group-significance
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file /home/qiime2/data/hiv/hiv_metadata_filt.tsv \
   --m-metadata-column start_viral_load_patient_by_visit \
   --o-visualization core-metrics-results/unweighted_unifrac_viral_load_significance.qzv \
   --p-pairwise
-
 
 
 # create hiv_export directory
@@ -166,5 +162,27 @@ qiime tools export \
 #copy filtered metadata to hiv_export directory
 cp ../hiv_metadata_filt.tsv .
 
+#server component of PICRUST2
+qiime feature-table filter-features \
+  --i-table table.qza \
+  --p-min-frequency 5 \
+  --o-filtered-table feature-frequency-filtered-table.qza
 
+qiime picrust2 full-pipeline \
+  --i-table feature-frequency-filtered-table.qza \
+  --i-seq rep-seqs.qza \
+  --output-dir q2-picrust2_output \
+  --p-placement-tool sepp \
+  --p-hsp-method pic \
+  --p-max-nsti 2 \
+  --verbose
 
+# Convert pathway abundance files to human readable files
+qiime tools export \
+  --input-path q2-picrust2_output/pathway_abundance.qza \
+  --output-path pathabun_exported
+
+biom convert \
+   -i pathabun_exported/feature-table.biom \
+   -o pathabun_exported/pathway_abundance.tsv \
+   --to-tsv
