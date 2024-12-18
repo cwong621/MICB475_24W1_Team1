@@ -30,7 +30,7 @@ phyloseq_A_noARTnonresponse <- subset_samples(leftphyloseq_rare, !(response_pati
 #This will return a ps object with the samples removed
 
 save(phyloseq_B_noARTnonresponse, file="phyloseq_B_noARTnonresponse.RData")
-save(phyloseq_A_noARTnonresponse, file="phyloseq_A_noARTnonresponsee.RData")
+save(phyloseq_A_noARTnonresponse, file="phyloseq_A_noARTnonresponse.RData")
 
 
 ######################## BETA DIVERSITY ###################################
