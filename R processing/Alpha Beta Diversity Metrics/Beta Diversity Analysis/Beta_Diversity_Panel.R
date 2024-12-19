@@ -4,33 +4,25 @@ library(cowplot)
 library(phyloseq)
 library(ape)
 library(tidyverse)
-library(picante) # double check where this was used
+library(picante)
 library(ggplot2)
 library(ggsignif)
 
 # Load in data
-
-load("HIV_rare.RData")
 load("leftphyloseq_rare.RData")
 load("rightphyloseq_rare.RData")
 
-
-#First, create a list of the samples that you want to remove from the rarified phyloseq object
+#create list of the samples to remove from the rarified phyloseq object
 Samples_toRemove <- c("ART-experienced nonresponsive V2 2", 
                       "ART-experienced nonresponsive V3 3")
 
-#To see what samples get removed
-PS_samples_to_remove <- subset_samples(rightphyloseq_rare, response_patient_by_visit %in% Samples_toRemove)
-#This will return a ps object that contains the samples you want to remove
-
-#To remove those from your phyloseq object
+#remove those from your phyloseq object
 phyloseq_B_noARTnonresponse <- subset_samples(rightphyloseq_rare, !(response_patient_by_visit %in% Samples_toRemove))
 phyloseq_A_noARTnonresponse <- subset_samples(leftphyloseq_rare, !(response_patient_by_visit %in% Samples_toRemove))
-#This will return a ps object with the samples removed
 
+#save Rdata
 save(phyloseq_B_noARTnonresponse, file="phyloseq_B_noARTnonresponse.RData")
 save(phyloseq_B_noARTnonresponse, file="phyloseq_B_noARTnonresponsee.RData")
-
 
 ######################## BETA DIVERSITY ###################################
 
@@ -244,8 +236,7 @@ ggsave("plot_beta_weighted_unifrac_response_cohort_A.png"
        , height=5, width=7)
 
 
-####### PANEL FIGURE ######
-# heights = c(20, 1)
+############ PANEL FIGURE ############
 
 # extract legend
 legend_2 <- cowplot::get_plot_component(gg_unweighted_unifrac_pcoa_A, 'guide-box-right', return_all = TRUE) 
