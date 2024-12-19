@@ -1,5 +1,9 @@
 #### Taxa Bar Plot Recreation
 
+# Note - This still uses the "left" and "right" notation to refer to the cohort split.
+# Variables and code referring to "left" correspond to Cohort A analysis, while
+# variabes and code referring to "right" correspond to Cohort B analysis.
+
 library(phyloseq)
 library(tidyverse)
 
@@ -88,19 +92,20 @@ ggsave("plot_taxonomy_rpbv_right_summary.png"
 
 
 ## Making the plots into one panel -> the right panel will be squished
+# Not included in final analysis - please refer to the above two summary images
+                                    
+#taxabar_paneled <- grid.arrange(
+#  arrangeGrob(
+#    gg_taxa_rpbv_left + theme(legend.position = "none", plot.title = element_text(hjust = 0)) + labs(title = bquote(bold("A"))), 
+#    gg_taxa_rpbv_right + theme(legend.position = "right", plot.title element_text(hjust = 0)) + labs(title = bquote(bold("B"))),
+#    nrow = 2, ncol = 2), nrow = 2,
+#  heights = c(15, 1),
+#  widths = c(10, 1)# Adjust heights to give more space to plots
+#)
 
-taxabar_paneled <- grid.arrange(
-  arrangeGrob(
-    gg_taxa_rpbv_left + theme(legend.position = "none", plot.title = element_text(hjust = 0)) + labs(title = bquote(bold("A"))), 
-    gg_taxa_rpbv_right + theme(legend.position = "right", plot.title element_text(hjust = 0)) + labs(title = bquote(bold("B"))),
-    nrow = 2, ncol = 2), nrow = 2,
-  heights = c(15, 1),
-  widths = c(10, 1)# Adjust heights to give more space to plots
-)
+# taxabar_paneled
 
-taxabar_paneled
-
-ggsave(filename = "taxabar_paneled.png"
-       , taxabar_paneled
-       , height=15, width=10
-       , )
+# ggsave(filename = "taxabar_paneled.png"
+#        , taxabar_paneled
+#        , height=15, width=10
+#        , )
